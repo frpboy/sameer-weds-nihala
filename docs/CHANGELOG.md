@@ -1,31 +1,87 @@
 # Changelog
 
-## v1.2.0 - Senior Architecture Refinement & Breathtaking Ambient Effects
-- **Unification of Motion Architecture (`src/motion/`)**: Consolidated all fragmented animation constants, timing systems, and legacy variants into a single authoritative motion design system (`src/motion/` with `variants.ts`, `timings.ts`, `easing.ts`, and `presets.ts`). Completely removed duplicate animation folders and legacy constants.
-- **UI Component Layer Consolidation (`src/components/ui/`)**: Refactored and unified duplicate component layers between `common` and `ui` into a highly structured `components/ui/` directory (`buttons/`, `cards/`, `inputs/`, `layout/`, and `overlays/`). Replaced redundant card and button variations with single definitive components featuring flexible variants.
-- **Modular Wedding Domain Configuration (`src/config/wedding/`)**: Re-architected `config/weddingData.ts` into modular domain configuration files (`couple.ts`, `venue.ts`, `social.ts`, `branding.ts`, and `index.ts`), keeping the top-level export intact for seamless backwards compatibility.
-- **SEO & Structured Data Module (`src/seo/`)**: Built dedicated SEO module generating official Schema.org `Event`/`Wedding` JSON-LD structured data and injected it directly into the application layout for premium search engine indexing and social link previews.
-- **Breathtaking Ambient Effects (`src/effects/`)**: Implemented a highly performant, GPU-accelerated ambient effects ecosystem. Features a custom RAF-optimized Gold Dust Cursor (desktop only via fine pointer media query), ultra-slow floating SVG ornaments (< 20 items), soft breathing ambient glow orbs, and multi-layered scroll parallax to provide luxury cinematic depth.
-- **Smart Background Audio Management**: Enhanced `MusicProvider` with automated tab visibility and window focus listeners. Background ambient music automatically pauses when the user switches tabs or changes apps, and gracefully resumes upon focus.
+All notable changes to this project are documented here.
 
-## v1.1.0 - Enterprise Architecture & Foundational Governance
-- **Centralized Providers (`src/providers/`)**: Established composite root provider architecture incorporating `ThemeProvider`, `LenisProvider`, `MusicProvider`, and `ModalProvider` to govern global UI state, theme tokens, audio playback, and modal gallery interactions.
-- **Unified Motion & Reduced Motion Support**: Centralized animation constants and transition variants in `src/constants/motion.ts`. Implemented `useReducedMotion` hook to respect OS accessibility preferences (`prefers-reduced-motion: reduce`) and optimize battery life on legacy mobile hardware.
-- **Shared Business Hooks & Libs**: Created reusable `useCountdown` hook to eliminate duplicate timer calculation logic. Built robust `src/lib/` utilities for Google Calendar URL generation, map links, and social sharing.
-- **Centralized Content Module (`src/content/`)**: Extracted all hardcoded UI copy, invitation messages, and headings into a single centralized content dictionary for seamless maintainability and localization.
-- **Serverless PostgreSQL RSVP Integration**: Built Vercel serverless API endpoint (`/api/rsvp.ts`) connecting to Neon PostgreSQL via `@neondatabase/serverless` over secure HTTP. Integrated frontend RSVP form with live loading states, robust error handling, and success confirmation.
-- **Premium UX & Social Sharing**: Updated footer social buttons to provide direct sharing options for both WhatsApp and Instagram (`Share on WhatsApp` & `Share to Instagram`) including the full invitation details and exact Vercel link (`https://shabin-weds-sana.vercel.app/`). Implemented dynamic URL personalization (`?guest=Name`) in `SplashIntro`. Established foundational testing suite using Vitest (`npm test`). Removed top progress indicator per user design directive. Added creator credit hyperlink for Rahul in footer. Comprehensive OpenGraph and Twitter card metadata added.
+---
 
-## v1.0.0 - Production Readiness & UI Refinements
-- **Seamless Single-Page Architecture**: Re-engineered section containers to share a continuous `#F8F4EE` warm ivory backdrop, removing harsh block borders and contrasting background fills across all sections and footer.
-- **Embedded Hero Countdown**: Integrated the countdown timer directly into the Hero screen beneath the wedding date inside premium glassmorphic blocks.
-- **Unified Venue Card & Interactive Map**: Consolidated the location information and Google Maps iframe into a single elegant card. Switched to official Google Maps query format (`q=Shifa Convention Center`) with a zoomed-out regional view (`z=12`) and precise location marker pin.
-- **Google Calendar & WhatsApp Integration**: Added "Add to Google Calendar" button alongside the map navigation button. Formatted all sharing links with formal text and removed all emojis across the website per user preference.
-- **Refined Typography & Buttons**: Restructured couple headings to stack cleanly on 3 lines (`Groom` on line 1, `&` on line 2, `Bride` on line 3) to prevent mobile word wrapping. Replaced solid footer buttons with delicate glass outline variants (`variant="glass"`).
-- **Carousel Enhancements**: Transformed the gallery into a vertical portrait (`9:16`) mobile carousel with 5-second auto-scrolling (with hover pause support) and sleek Instagram-style bullet pagination indicators.
+## v2.0.0 — 2026-05-17 | Full RSVP Backend + Polish Sprint
 
-## v0.1.0 - Initial Project Initialization
-- Initial project structure created
-- Documentation setup completed
-- Design system defined
-- Base architecture finalized
+### 🗄️ Live RSVP Backend (Neon PostgreSQL)
+- **API GET support added** to `/api/rsvp.ts` — now fetches all submitted RSVPs from Neon DB ordered by `created_at DESC`
+- **Local dev API server** (`server.mjs`) created — mirrors Vercel serverless function exactly, connects to real Neon DB on port `3001`
+- **Vite proxy** configured in `vite.config.ts` to forward `/api/*` to `localhost:3001` during local development
+- **`concurrently`** added as dev dependency; `npm run dev` now starts both Vite frontend and API server simultaneously
+- Database schema: `rsvps` table with `full_name`, `attendance`, `guest_count`, `dietary_or_notes`, `created_at`
+
+### 💌 RSVP Section — Full Redesign
+- **3-column grid layout**: RSVP Form | Guest Counter | Live Wishes Wall
+- All three cards now use the **site's warm theme palette** (`bg-secondary/70 backdrop-blur border border-primary/25`) — no longer dark/charcoal
+- **Column 1 — Form**: Name input, Joyfully Accepts / Regretfully Declines toggle, animated guest stepper, blessing textarea, gold submit button with loading state
+- **Column 2 — Guest Counter**: Bismillah ornament, attending count + total guests pulled live from Neon DB
+- **Column 3 — Live Wishes Wall**: Scrollable list of all RSVPs fetched from DB, animated `AnimatePresence` entries, attending/unable badge, quote + author
+- **Mobile layout**: Stacks as form → counter → wishes (one per row)
+- Success state: Checkmark + "Shukran!" confirmation with "Submit Another" option
+
+### 🔖 Favicon & PWA
+- Created `/public/favicon/favicon.svg` — circular S&S emblem in champagne gold on warm cream
+- Added `<link rel="icon">`, `<link rel="shortcut icon">`, `<link rel="apple-touch-icon">` in `index.html`
+- **Mobile browser chrome theming**: `theme-color: #141412` (deep charcoal) for Android Chrome, Samsung Internet, Edge
+- iOS: `apple-mobile-web-app-capable`, `apple-mobile-web-app-status-bar-style: black-translucent`
+- Windows: `msapplication-TileColor`, `msapplication-navbutton-color: #C7A97F`
+- `apple-mobile-web-app-title: "Shabin & Sana"` for iOS home screen
+
+### 📊 Analytics
+- **Microsoft Clarity** integrated (`wsl77zfey5`) — session recordings, heatmaps, scroll depth, dead click detection
+
+### 🎨 Scrollbar Theming
+- Custom webkit scrollbar: `6px` width, gold `#C7A97F` thumb, cream `#F0EBE2` track, hover darkens to `#a88a61`
+- Firefox: `scrollbar-color` + `scrollbar-width: thin`
+- Applied globally to page scroll and Wishes Wall inner scroll
+
+### 🌙 InvitationMessage — Bismillah Ornament
+- Added animated Bismillah Arabic calligraphy (`﷽`) above the section title to fill blank visual gap between Hero and Invitation
+
+### ⚡ SectionContainer — Padding
+- Reduced mobile vertical padding from `py-16` to `py-12` to tighten spacing
+
+### 📝 Documentation
+- Updated `README.md` with full feature list, local dev setup, SQL schema, npm scripts table, architecture diagram
+- Updated `CHANGELOG.md` (this file)
+- Updated all 12 `docs/` files to reflect current architecture
+
+---
+
+## v1.2.0 — Senior Architecture Refinement & Ambient Effects
+
+- **Motion System** (`src/motion/`): Consolidated all animation constants, easing, variants, and stagger tokens
+- **UI Component Layer** (`src/components/ui/`): Unified `buttons/`, `cards/`, `inputs/`, `layout/`, `overlays/`
+- **SEO Module** (`src/seo/`): Schema.org `Event`/`Wedding` JSON-LD structured data injected via layout
+- **Ambient Effects** (`src/effects/`): RAF-optimized Gold Dust Cursor, floating SVG ornaments, breathing glow orbs, parallax layers
+- **Smart Audio**: Music auto-pauses on tab switch / window blur, resumes on focus
+
+---
+
+## v1.1.0 — Enterprise Architecture & RSVP Integration
+
+- **Providers** (`src/providers/`): `ThemeProvider`, `LenisProvider`, `MusicProvider`, `ModalProvider`
+- **`useCountdown` hook**: Shared countdown logic — eliminates duplicate timer calculations
+- **Content Module** (`src/content/`): All UI copy centralized for maintainability
+- **RSVP API v1**: Vercel serverless POST endpoint with Neon PostgreSQL, loading states, error handling
+- **Social Sharing**: WhatsApp + Instagram share buttons with personalized URLs (`?guest=Name`)
+- **OpenGraph & Twitter cards**: Full social preview metadata
+
+---
+
+## v1.0.0 — Production Readiness & UI Refinements
+
+- **Single-page architecture**: Continuous `#F8F4EE` backdrop across all sections
+- **Hero Countdown**: Timer embedded directly below wedding date in Hero
+- **Venue Card**: Google Maps iframe + navigation button in unified card
+- **Google Calendar**: "Add to Google Calendar" button in Countdown section
+- **Gallery**: Masonry grid with lightbox from local `/public/images/` WebP files
+
+---
+
+## v0.1.0 — Initial Project Initialization
+
+- Initial project structure, documentation, design system, and base architecture

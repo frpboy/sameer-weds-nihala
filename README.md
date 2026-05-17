@@ -1,32 +1,38 @@
-# 💍 Shabin & Sana | Premium Wedding Invitation
+# 💍 Shabin & Sana | Premium Wedding Invitation Microsite
 
-> An elegant, mobile-first digital wedding invitation microsite for **Muhammed Shabin & Sana Subair**, crafted with React, Vite, Tailwind CSS (v4), and Framer Motion.
+> An elegant, mobile-first digital wedding invitation microsite for **Muhammed Shabin & Sana Subair**, crafted with React, Vite, Tailwind CSS (v4), and Framer Motion. Deployed on Vercel with a live Neon PostgreSQL RSVP backend.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ffrpboy%2Fshabin-weds-sana)
+[![Live Site](https://img.shields.io/badge/Live%20Site-shabin--weds--sana.vercel.app-brightgreen)](https://shabin-weds-sana.vercel.app/)
 
 ---
 
 ## 🌟 Overview
 
-Designed to evoke calm, emotional resonance, and high-fidelity aesthetics, this microsite serves as an interactive invitation experience. Built specifically for seamless performance across modern and low-end mobile viewports (including WhatsApp and Instagram in-app browsers).
+Designed to evoke calm, emotional resonance, and high-fidelity aesthetics, this microsite serves as an immersive interactive invitation experience. Built specifically for seamless performance across modern and low-end mobile viewports (including WhatsApp and Instagram in-app browsers).
 
 ### ✨ Core Features
-- **📜 Splash Calligraphy**: Elegant envelope/intro experience with Surah Ar-Rum calligraphy and **S&S** monogram.
-- **✨ Parallax Hero**: Ambient light orbs with custom serif typography (`Cinzel` & `Cormorant Garamond`).
-- **⏳ High-Precision Countdown**: Live countdown timer to July 19, 2026.
-- **🗺️ Venue & Navigation**: Direct Google Maps integration and routing.
-- **🖼️ Lightbox Gallery**: High-fidelity masonry photo grid with interactive zoom modal.
-- **💌 Guest RSVP**: Integrated submission form for attendance and guest counts.
-- **🎵 Ambient Audio**: Floating persistent background audio player.
-- **📲 Social Integration**: One-tap share buttons tailored for WhatsApp and Instagram.
+
+| Feature | Description |
+|---|---|
+| 📜 **Splash Calligraphy** | Elegant envelope intro with Surah Ar-Rum, Bismillah, and S&S monogram |
+| ✨ **Parallax Hero** | Mouse-reactive ambient geometry with Cinzel & Cormorant Garamond typography |
+| ⏳ **Live Countdown** | High-precision countdown to July 19, 2026 — shown in Hero and Countdown section |
+| 🎨 **Mouse Trail** | Golden heart particle trail following cursor movement |
+| 🗺️ **Venue & Navigation** | Google Maps embed + direct routing button |
+| 🖼️ **Gallery** | Masonry photo grid with lightbox from local `/public/images/` |
+| 💌 **Live RSVP** | Form → Neon PostgreSQL DB → Live Wishes Wall with real-time guest count |
+| 🎵 **Ambient Audio** | Floating persistent music player |
+| 📱 **Mobile PWA** | Theme-colored status bar, iOS home screen support, S&S favicon |
+| 📊 **Analytics** | Microsoft Clarity (session recordings + heatmaps) |
 
 ---
 
 ## 🚀 Quickstart
 
 ### Prerequisites
-- Node.js (v20+ recommended)
-- npm or pnpm
+- Node.js v20+
+- npm
 
 ### Local Development
 
@@ -41,73 +47,79 @@ Designed to evoke calm, emotional resonance, and high-fidelity aesthetics, this 
    npm install
    ```
 
-3. **Start the dev server**:
+3. **Set up environment variables** — create a `.env` file:
+   ```env
+   DATABASE_URL=postgresql://...your-neon-connection-string...
+   ```
+
+4. **Initialize the database** — run this in the [Neon SQL Editor](https://console.neon.tech):
+   ```sql
+   CREATE TABLE IF NOT EXISTS rsvps (
+     id SERIAL PRIMARY KEY,
+     full_name VARCHAR(255) NOT NULL,
+     attendance VARCHAR(50) NOT NULL,
+     guest_count VARCHAR(50) DEFAULT '1',
+     dietary_or_notes TEXT,
+     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+   );
+   ```
+
+5. **Start both dev servers** (Vite frontend + Neon API):
    ```bash
    npm run dev
    ```
-   Open `http://localhost:5173` in your browser.
+   - Frontend → `http://localhost:5173`
+   - RSVP API → `http://localhost:3001/api/rsvp` (proxied via Vite)
 
-4. **Production Build**:
+6. **Production build**:
    ```bash
    npm run build
    ```
 
 ---
 
-## 📂 Project Architecture & Documentation
-
-All architectural standards and guidelines are strictly maintained in the `docs/` folder:
+## 📂 Project Architecture
 
 ```
 shabin-weds-sana/
-├── docs/
-│   ├── 01_PRD.md                 # Product Vision & Target Audience
-│   ├── 02_TRD.md                 # Technical Architecture & Standards
-│   ├── 03_UI_UX.md               # Design System & Motion Rules
-│   ├── 04_APPFLOW.md             # Navigation & Screen Sequences
-│   ├── 05_SCHEMA.md              # TypeScript Interfaces for Content
-│   ├── 06_IMPLEMENTATION_PLAN.md # Phased Execution Strategy
-│   ├── 07_DESIGN_SYSTEM.md       # Color Palette & Typography Hierarchy
-│   ├── 08_DEPLOYMENT.md          # Vercel Pre-flight Checklist
-│   ├── 09_SEO.md                 # Open Graph & Social Sharing Rules
-│   ├── 10_ASSET_GUIDELINES.md    # Media Compression & WebP Rules
-│   ├── 11_ANIMATION_SYSTEM.md    # Easing Tokens & Motion Limits
-│   ├── 12_COMPONENT_MAP.md       # Component Inventory
-│   └── CHANGELOG.md              # Version History
-│
-├── src/
-│   ├── animations/               # Reusable Motion Presets
-│   ├── components/               # Split into common/, sections/, ui/
-│   ├── config/                   # Centralized weddingData.ts
-│   ├── constants/                # Magic strings/numbers (Routes, Timings)
-│   ├── theme/                    # Color & Typography Tokens
-│   └── styles/                   # Tailwind v4 globals.css
+├── api/
+│   └── rsvp.ts               # Vercel serverless: GET (fetch) + POST (save) RSVPs → Neon DB
+├── server.mjs                # Local dev API server (mirrors Vercel function, port 3001)
+├── public/
+│   ├── favicon/favicon.svg   # S&S circular gold emblem
+│   ├── images/               # All wedding photos (local WebP)
+│   └── audio/ambient.mp3     # Background music
+├── docs/                     # Full architectural documentation (12 docs + CHANGELOG)
+└── src/
+    ├── components/
+    │   ├── sections/         # HeroContent, CountdownSection, RsvpSection, GallerySection…
+    │   └── ui/               # Button, Card, SectionContainer, SectionTitle…
+    ├── config/weddingData.ts # Single source of truth for names, dates, venue
+    ├── content/              # Centralized UI copy
+    ├── effects/              # MouseTrail (gold hearts), AmbientEffects
+    ├── hooks/                # useCountdown, useReducedMotion
+    ├── motion/               # VARIANTS, EASE, STAGGER tokens
+    ├── providers/            # Music, Lenis, Modal, Theme providers
+    ├── seo/                  # JSON-LD structured data
+    └── styles/globals.css    # Tailwind v4 + themed scrollbar
 ```
 
 ---
 
-## 🎨 Configuration & Content
+## 🎨 Customization
 
-To customize the couple names, dates, venue information, or theme colors, simply update `src/config/weddingData.ts`:
+Edit `src/config/weddingData.ts` to change all content:
 
 ```typescript
 export const weddingData = {
-  groom: {
-    fullName: "Muhammed Shabin",
-    shortName: "Shabin",
-  },
-  bride: {
-    fullName: "Sana Subair",
-    shortName: "Sana",
-  },
-  coupleName: "Shabin & Sana",
-  monogram: "S&S",
+  groom:   { fullName: "Muhammed Shabin", shortName: "Shabin" },
+  bride:   { fullName: "Sana Subair",     shortName: "Sana"   },
   wedding: { date: "2026-07-19", day: "Sunday" },
   theme: {
-    primary: "#C7A97F",    // Champagne gold
+    primary:   "#C7A97F",  // Champagne gold
     secondary: "#F8F4EE",  // Warm ivory
-    accent: "#2E4A3D",     // Deep emerald
-    text: "#1A1A1A",       // Matte black
+    accent:    "#2E4A3D",  // Deep emerald
+    text:      "#1A1A1A",  // Matte black
   },
 };
 ```
@@ -116,12 +128,40 @@ export const weddingData = {
 
 ## 🛠️ Tech Stack
 
-- **Framework**: React 18 + Vite + TypeScript
-- **Styling**: Tailwind CSS v4 + PostCSS
-- **Animation**: Framer Motion
-- **Scrolling**: Lenis Smooth Scroll
-- **Icons**: React Icons
-- **Deployment**: Vercel
+| Layer | Technology |
+|---|---|
+| Framework | React 18 + Vite + TypeScript |
+| Styling | Tailwind CSS v4 + PostCSS |
+| Animation | Framer Motion |
+| Smooth Scroll | Lenis |
+| Icons | React Icons (Bi, Md) |
+| Database | Neon PostgreSQL (serverless) |
+| API | Vercel Serverless Functions |
+| Analytics | Microsoft Clarity |
+| Deployment | Vercel |
+
+---
+
+## 📦 NPM Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Starts Vite frontend + local Neon API server concurrently |
+| `npm run dev:vite` | Vite frontend only |
+| `npm run dev:api` | Local API server only (port 3001) |
+| `npm run build` | TypeScript check + production bundle |
+| `npm run preview` | Preview production build locally |
+| `npm run optimize` | Compress images to WebP |
+| `npm test` | Run Vitest test suite |
+
+---
+
+## 🌐 Deployment (Vercel)
+
+1. Push to GitHub
+2. Import into Vercel
+3. Add `DATABASE_URL` environment variable in Vercel project settings
+4. Deploy — `/api/rsvp.ts` is automatically served as a serverless function
 
 ---
 

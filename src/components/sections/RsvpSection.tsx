@@ -295,7 +295,7 @@ export default function RsvpSection() {
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35 }}
-                  className="p-3.5 rounded-xl bg-secondary border border-primary/20 shadow-sm space-y-1.5"
+                  className="p-3.5 rounded-xl bg-secondary border border-primary/20 shadow-sm space-y-1.5 overflow-hidden"
                 >
                   <span className={`flex items-center gap-1.5 text-[10px] font-poppins font-semibold uppercase tracking-wider ${
                     entry.attendance === 'yes' ? 'text-emerald-600' : 'text-text/40'
@@ -306,11 +306,11 @@ export default function RsvpSection() {
                     }
                   </span>
                   {getNote(entry) && (
-                    <p className="font-cormorant italic text-text/80 text-sm leading-snug">
+                    <p className="font-cormorant italic text-text/80 text-sm leading-snug break-words [overflow-wrap:anywhere] [hyphens:auto]" lang="en">
                       &ldquo;{getNote(entry)}&rdquo;
                     </p>
                   )}
-                  <p className="font-poppins text-primary text-[11px] tracking-wide font-medium">— {getName(entry)}</p>
+                  <p className="font-poppins text-primary text-[11px] tracking-wide font-medium break-words [overflow-wrap:anywhere]">— {getName(entry)}</p>
                 </motion.div>
               ))}
             </AnimatePresence>
