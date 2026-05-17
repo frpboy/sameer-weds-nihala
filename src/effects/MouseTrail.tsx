@@ -10,11 +10,9 @@ interface Particle {
   rot: number;
   vrot: number;
   active: boolean;
-  symbol: string;
 }
 
 const PARTICLE_COUNT = 30;
-const SYMBOLS = ['♥', '✨', '✦', '♥', '•', '♥'];
 
 export default function MouseTrail() {
   const auraRef = useRef<HTMLDivElement>(null);
@@ -29,7 +27,7 @@ export default function MouseTrail() {
     const isDesktop = window.matchMedia('(pointer: fine)').matches;
     if (!isDesktop) return;
 
-    particles.current = Array.from({ length: PARTICLE_COUNT }, (_, i) => ({
+    particles.current = Array.from({ length: PARTICLE_COUNT }, () => ({
       x: 0,
       y: 0,
       vx: 0,
@@ -39,7 +37,6 @@ export default function MouseTrail() {
       rot: 0,
       vrot: 0,
       active: false,
-      symbol: SYMBOLS[i % SYMBOLS.length],
     }));
 
     let animationFrameId: number;
@@ -124,23 +121,17 @@ export default function MouseTrail() {
         className="absolute left-0 top-0 w-[300px] h-[300px] rounded-full bg-gradient-to-r from-primary/25 via-amber-400/15 to-transparent blur-[70px] opacity-30 will-change-transform"
       />
 
-      {/* Floating Hearts & Sparkles */}
-      {Array.from({ length: PARTICLE_COUNT }).map((_, i) => {
-        const symbol = SYMBOLS[i % SYMBOLS.length];
-        const isHeart = symbol === '♥';
-        return (
-          <div
-            key={i}
-            ref={(el) => { particleRefs.current[i] = el; }}
-            style={{ display: 'none' }}
-            className={`absolute left-0 top-0 items-center justify-center font-cinzel will-change-transform drop-shadow-[0_2px_8px_rgba(199,169,127,0.6)] ${
-              isHeart ? 'text-rose-500/90 text-lg md:text-xl' : 'text-primary text-sm md:text-base font-bold'
-            }`}
-          >
-            {symbol}
-          </div>
-        );
-      })}
+      {/* Floating Gold Hearts */}
+      {Array.from({ length: PARTICLE_COUNT }).map((_, i) => (
+        <div
+          key={i}
+          ref={(el) => { particleRefs.current[i] = el; }}
+          style={{ display: 'none' }}
+          className="absolute left-0 top-0 items-center justify-center font-cinzel text-primary text-lg md:text-xl will-change-transform drop-shadow-[0_2px_8px_rgba(199,169,127,0.6)]"
+        >
+          ♥
+        </div>
+      ))}
     </div>
   );
 }

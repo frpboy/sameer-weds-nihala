@@ -8,7 +8,9 @@
   },
   "scripts": {
     "test": "vitest run",
-    "dev": "vite",
+    "dev": "concurrently -n API,VITE -c yellow,cyan \"node server.mjs\" \"vite\"",
+    "dev:vite": "vite",
+    "dev:api": "node server.mjs",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "optimize": "node scripts/optimize-images.js"
@@ -41,6 +43,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.2",
     "autoprefixer": "^10.5.0",
+    "concurrently": "^9.2.1",
     "postcss": "^8.5.14",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.3.0",

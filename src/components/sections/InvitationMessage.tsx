@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import SectionContainer from '../ui/layout/SectionContainer';
 import SectionTitle from '../ui/layout/SectionTitle';
 import Card from '../ui/cards/Card';
@@ -6,7 +7,19 @@ import { weddingData } from '../../config/weddingData';
 
 export default function InvitationMessage() {
   return (
-    <SectionContainer id="invitation" className="relative z-10">
+    <SectionContainer id="invitation" className="relative z-10 pt-4 md:pt-12">
+      <div className="flex flex-col items-center justify-center text-center mb-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="font-cinzel text-4xl md:text-5xl text-primary/90 mb-4 tracking-widest select-none drop-shadow-[0_2px_10px_rgba(199,169,127,0.3)] font-light"
+        >
+          ﷽
+        </motion.div>
+      </div>
+
       <SectionTitle 
         title="The Invitation" 
         subtitle="With the blessings of Allah & our beloved families" 

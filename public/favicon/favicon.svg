@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Cream background -->
+  <circle cx="50" cy="50" r="49" fill="#FAF7F2"/>
+  <!-- Thin gold border ring -->
+  <circle cx="50" cy="50" r="46" fill="none" stroke="#C7A97F" stroke-width="1.2"/>
+  <!-- S&S text -->
+  <text
+    x="50"
+    y="57"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="22"
+    font-weight="400"
+    fill="#C7A97F"
+    letter-spacing="1"
+  >S&amp;S</text>
+</svg>
