@@ -37,3 +37,9 @@ export const SPACING = {
   GAP_LG: '2rem',
   GAP_XL: '3rem',
 } as const;
+
+export const themeTokens = {
+  COLORS,
+  TYPOGRAPHY,
+  SPACING,
+};

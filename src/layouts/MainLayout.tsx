@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Lenis from 'lenis';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 export default function MainLayout() {
   useEffect(() => {
@@ -23,8 +24,20 @@ export default function MainLayout() {
     };
   }, []);
 
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   return (
-    <div className="w-full min-h-screen bg-secondary">
+    <div className="relative w-full min-h-screen bg-secondary">
+      {/* Subtle Premium Scroll Progress Indicator */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-primary z-[100] origin-left shadow-sm"
+        style={{ scaleX }}
+      />
       <Outlet />
     </div>
   );

@@ -1,38 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
 import { BiVolumeFull, BiVolumeMute } from 'react-icons/bi';
 import { motion } from 'framer-motion';
+import { useMusic } from '../../providers/MusicProvider';
 
-interface FloatingMusicButtonProps {
-  audioUrl?: string;
-}
-
-export default function FloatingMusicButton({ audioUrl = '/audio/ambient.mp3' }: FloatingMusicButtonProps) {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    audioRef.current = new Audio(audioUrl);
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.4;
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-      }
-    };
-  }, [audioUrl]);
-
-  const togglePlay = () => {
-    if (!audioRef.current) return;
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play().catch(() => {
-        // Handle auto-play restriction on mobile browsers
-      });
-    }
-    setIsPlaying(!isPlaying);
-  };
+export default function FloatingMusicButton() {
+  const { isPlaying, togglePlay } = useMusic();
 
   return (
     <motion.button

@@ -46,9 +46,20 @@ export default function Footer() {
         </div>
 
         {/* Copyright & Credits */}
-        <p className="font-poppins text-xs text-text/50 tracking-wider font-light">
-          Made with love & prayers. © 2026 {weddingData.coupleName}. All rights reserved.
-        </p>
+        <div className="font-poppins text-xs text-text/50 tracking-wider font-light space-y-1.5">
+          <p>
+            Made with love & prayers by{' '}
+            <a 
+              href="https://github.com/frpboy" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-primary hover:underline font-medium transition-colors"
+            >
+              Rahul
+            </a>
+          </p>
+          <p>© 2026 {weddingData.coupleName}. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );

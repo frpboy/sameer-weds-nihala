@@ -3,11 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SectionContainer from '../common/SectionContainer';
 import SectionTitle from '../common/SectionTitle';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
+import { useModal } from '../../providers/ModalProvider';
+import { content } from '../../content';
 
 export default function GallerySection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // -1 for left, 1 for right
+  const [direction, setDirection] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const { openGalleryModal } = useModal();
 
   const photos = [
     { id: 1, url: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop', caption: 'Cherished Moments' },
@@ -18,7 +21,6 @@ export default function GallerySection() {
     { id: 6, url: 'https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=800&auto=format&fit=crop', caption: 'Endless Love' },
   ];
 
-  // Auto-scrolling timer (every 5 seconds)
   useEffect(() => {
     if (isHovered) return;
     const timer = setInterval(() => {
@@ -66,14 +68,14 @@ export default function GallerySection() {
 
   return (
     <SectionContainer id="gallery" className="relative z-10">
-      <SectionTitle title="Captured Memories" subtitle="Glimpses of our pre-wedding moments" />
+      <SectionTitle title={content.gallery.sectionTitle} subtitle={content.gallery.sectionSubtitle} />
 
       <div className="max-w-4xl mx-auto px-4 relative flex flex-col items-center">
-        {/* 9:16 Portrait Carousel Viewport */}
         <div
-          className="relative w-full max-w-[360px] md:max-w-[400px] aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border border-primary/30 bg-secondary flex items-center justify-center select-none group"
+          className="relative w-full max-w-[360px] md:max-w-[400px] aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border border-primary/30 bg-secondary flex items-center justify-center select-none group cursor-pointer"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          onClick={() => openGalleryModal(activePhoto.url)}
         >
           <AnimatePresence initial={false} custom={direction} mode="popLayout">
             <motion.div
@@ -83,7 +85,7 @@ export default function GallerySection() {
               initial="enter"
               animate="center"
               exit="exit"
-              className="absolute inset-0 cursor-grab active:cursor-grabbing"
+              className="absolute inset-0"
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.2}
@@ -95,24 +97,25 @@ export default function GallerySection() {
               <img
                 src={activePhoto.url}
                 alt={activePhoto.caption}
-                loading="eager"
+                loading={activePhoto.id === 1 ? "eager" : "lazy"}
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
               
-              {/* Overlay with caption */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-center pointer-events-none">
                 <span className="text-secondary font-cinzel text-xl md:text-2xl tracking-wider font-medium">
                   {activePhoto.caption}
+                </span>
+                <span className="text-secondary/70 font-poppins text-[10px] tracking-widest uppercase mt-2">
+                  Click to expand
                 </span>
               </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Previous / Next Arrow Controls */}
           <button
             onClick={(e) => { e.stopPropagation(); handlePrev(); }}
             aria-label="Previous Photo"
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-secondary/80 backdrop-blur-md border border-primary/50 text-primary flex items-center justify-center shadow-lg hover:scale-110 hover:bg-secondary transition-all z-20 focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-secondary/80 backdrop-blur-md border border-primary/50 text-primary flex items-center justify-center shadow-lg hover:scale-110 hover:bg-secondary transition-all z-20 focus:outline-none opacity-0 group-hover:opacity-100 cursor-pointer"
           >
             <BiChevronLeft size={28} />
           </button>
@@ -120,13 +123,12 @@ export default function GallerySection() {
           <button
             onClick={(e) => { e.stopPropagation(); handleNext(); }}
             aria-label="Next Photo"
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-secondary/80 backdrop-blur-md border border-primary/50 text-primary flex items-center justify-center shadow-lg hover:scale-110 hover:bg-secondary transition-all z-20 focus:outline-none opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-secondary/80 backdrop-blur-md border border-primary/50 text-primary flex items-center justify-center shadow-lg hover:scale-110 hover:bg-secondary transition-all z-20 focus:outline-none opacity-0 group-hover:opacity-100 cursor-pointer"
           >
             <BiChevronRight size={28} />
           </button>
         </div>
 
-        {/* Instagram-style Pagination Dots */}
         <div className="flex items-center justify-center gap-2 mt-6">
           {photos.map((photo, index) => (
             <button
