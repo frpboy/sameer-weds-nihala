@@ -5,21 +5,24 @@ import { weddingData } from '../../config/weddingData';
 import { getWhatsAppShareUrl, shareToInstagram } from '../../lib/share';
 
 export default function Footer() {
-  const [copiedToast, setCopiedToast] = useState(false);
+  const [instagramToast, setInstagramToast] = useState<'copied' | null>(null);
   const webLink = 'https://shabin-weds-sana.vercel.app/';
-  const rawMessage = `You are joyfully invited to the wedding celebration of Muhammed Shabin & Sana Subair on Sunday, July 19, 2026 at ${weddingData.wedding.venue}. View details & RSVP: ${webLink}`;
+  const rawMessage = `You are joyfully invited to the wedding celebration of Muhammed Shabin & Sana Subair on Sunday, July 19, 2026 at ${weddingData.wedding.venue}.\n\nView details & RSVP: ${webLink}`;
   
   const whatsappShareUrl = getWhatsAppShareUrl(rawMessage);
 
+
   const handleInstagramShare = async () => {
-    const wasShared = await shareToInstagram(
+    const result = await shareToInstagram(
       `You are joyfully invited to the wedding celebration of Muhammed Shabin & Sana Subair on Sunday, July 19, 2026 at ${weddingData.wedding.venue}.`,
       webLink
     );
-    if (!wasShared) {
-      setCopiedToast(true);
-      setTimeout(() => setCopiedToast(false), 3500);
+    if (result === 'copied') {
+      setInstagramToast('copied');
+      setTimeout(() => setInstagramToast(null), 3500);
     }
+    // 'native' → share sheet opened, nothing else to do
+    // 'failed' → user cancelled, nothing to show
   };
 
   return (
@@ -62,9 +65,9 @@ export default function Footer() {
 
         {/* Toast notification */}
         <div className="h-8 flex items-center justify-center mb-8">
-          {copiedToast && (
+          {instagramToast === 'copied' && (
             <span className="font-poppins text-xs text-primary bg-primary/10 border border-primary/30 px-5 py-2 rounded-full animate-fade-in shadow-sm">
-              Invitation text copied! Redirecting to Instagram...
+              Link copied! Open Instagram and paste into your story or DM.
             </span>
           )}
         </div>
