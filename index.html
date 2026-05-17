@@ -12,7 +12,7 @@
     <meta property="og:url" content="https://shabin-weds-sana.vercel.app/" />
     <meta property="og:title" content="Shabin & Sana | Wedding Invitation" />
     <meta property="og:description" content="We joyfully invite you to celebrate our Wedding Reception (Walima) on Sunday, July 19, 2026 at Shifa Convention Center." />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" />
+    <meta property="og:image" content="https://shabin-weds-sana.vercel.app/images/Indhira-Jason-Wedding-23-ea0654d1228142eeab611e87d3f27e40.webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Shabin & Sana Wedding Invitation" />
@@ -22,12 +22,32 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Shabin & Sana | Wedding Invitation" />
     <meta name="twitter:description" content="We joyfully invite you to celebrate our Wedding Reception (Walima) on Sunday, July 19, 2026 at Shifa Convention Center." />
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" />
+    <meta name="twitter:image" content="https://shabin-weds-sana.vercel.app/images/Indhira-Jason-Wedding-23-ea0654d1228142eeab611e87d3f27e40.webp" />
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" as="style">
+    <link rel="preload" href="/images/Indhira-Jason-Wedding-23-ea0654d1228142eeab611e87d3f27e40.webp" as="image">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Performance Detection Strategy -->
+    <script>
+      (function() {
+        var isLowEnd = false;
+        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) isLowEnd = true;
+        if (navigator.userAgent.indexOf('SamsungBrowser') !== -1) isLowEnd = true;
+        var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        if (connection && (connection.effectiveType === '2g' || connection.effectiveType === '3g' || connection.saveData)) {
+          isLowEnd = true;
+        }
+        if (isLowEnd) {
+          document.documentElement.classList.add('low-performance-device');
+        }
+      })();
+    </script>
   </head>
   <body class="bg-secondary text-text font-poppins">
     <div id="root"></div>

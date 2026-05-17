@@ -10,12 +10,12 @@ export default function GallerySection() {
   const [isHovered, setIsHovered] = useState(false);
 
   const photos = [
-    { id: 1, url: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop', caption: 'Sacred Vows' },
-    { id: 2, url: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop', caption: 'Blessed Union' },
-    { id: 3, url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop', caption: 'Cherished Moments' },
-    { id: 4, url: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop', caption: 'Elegant Attire' },
-    { id: 5, url: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=800&auto=format&fit=crop', caption: 'Together Forever' },
-    { id: 6, url: 'https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=800&auto=format&fit=crop', caption: 'Endless Love' },
+    { id: 1, url: '/images/Indhira-Jason-Wedding-23-ea0654d1228142eeab611e87d3f27e40.webp', caption: 'Sacred Vows' },
+    { id: 2, url: '/images/JackandVivian-KellyHornberger-111-738f6a7872c648bcb69efd1932148ed0.webp', caption: 'Blessed Union' },
+    { id: 3, url: '/images/AFTERCEREMONY-45-a52a8b106fd34d989e3a4de7c4388e70.webp', caption: 'Cherished Moments' },
+    { id: 4, url: '/images/Wedding-Pose-Caroline-Tran-fd7be81338bc477b9a432061babc1283.webp', caption: 'Elegant Attire' },
+    { id: 5, url: '/images/Wedding-Pose-FOR-THE-LOVE-OF-IT-81f2ea6b25ce4902b553c425779388c5.webp', caption: 'Together Forever' },
+    { id: 6, url: '/images/Portraits-41-342c5ab4e22147cc84bad49a43f2e952.webp', caption: 'Endless Love' },
   ];
 
   useEffect(() => {
@@ -106,10 +106,18 @@ export default function GallerySection() {
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
               />
 
-              {/* Warm tone layer & light leaks */}
-              <div className="absolute inset-0 bg-amber-950/20 mix-blend-color-burn pointer-events-none" />
-              <div className="absolute -top-16 -left-16 w-56 h-56 bg-amber-500/25 rounded-full blur-[50px] pointer-events-none animate-pulse" />
-              <div className="absolute -bottom-16 -right-16 w-56 h-56 bg-primary/25 rounded-full blur-[50px] pointer-events-none animate-pulse" />
+              {/* Warm tone layer & soft light leaks */}
+              <div className="absolute inset-0 bg-amber-950/10 mix-blend-color-burn pointer-events-none" />
+              <motion.div 
+                animate={{ opacity: [0.3, 0.5, 0.3] }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -top-16 -left-16 w-48 h-48 bg-amber-500/10 rounded-full blur-[40px] pointer-events-none" 
+              />
+              <motion.div 
+                animate={{ opacity: [0.2, 0.4, 0.2] }}
+                transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+                className="absolute -bottom-16 -right-16 w-48 h-48 bg-primary/10 rounded-full blur-[40px] pointer-events-none" 
+              />
             </motion.div>
           </AnimatePresence>
         </div>

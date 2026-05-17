@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import SectionContainer from '../ui/layout/SectionContainer';
 import SectionTitle from '../ui/layout/SectionTitle';
 import Card from '../ui/cards/Card';
@@ -70,7 +71,19 @@ export default function RsvpSection() {
         <Card variant="glass" className="p-8 md:p-12 border-primary/40 shadow-xl relative overflow-hidden">
           {submitted ? (
             <div className="flex flex-col items-center justify-center text-center py-12 animate-fade-in">
-              <BiCheckCircle size={64} className="text-primary mb-6 animate-bounce" />
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="relative mb-6"
+              >
+                <motion.div 
+                  animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.1, 1] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 bg-primary/20 blur-xl rounded-full" 
+                />
+                <BiCheckCircle size={64} className="text-primary relative z-10" />
+              </motion.div>
               <h3 className="font-cinzel text-3xl text-accent font-medium mb-3">Shukran! Thank You</h3>
               <p className="font-poppins text-sm md:text-base text-text/80 font-light mb-8 max-w-md">
                 Your RSVP has been beautifully received. We are so grateful and can't wait to share our joyful moments with you.

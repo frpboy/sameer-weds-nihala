@@ -29,7 +29,7 @@ export default function Home() {
       />
       
       {/* Main Content */}
-      <div className={`transition-opacity duration-1000 ${hasEntered ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none h-screen overflow-hidden fixed inset-0'}`}>
+      <div className={`transition-opacity duration-1000 ${hasEntered ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none h-0 overflow-hidden'}`}>
         <Hero />
         <InvitationMessage />
         <TimelineSection />

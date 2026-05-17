@@ -38,3 +38,13 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* Fallback for low-end Android GPUs struggling with heavy backdrop filters */
+.low-performance-device .backdrop-blur-md,
+.low-performance-device .backdrop-blur-sm,
+.low-performance-device .backdrop-blur-lg,
+.low-performance-device [class*="blur-"],
+.low-performance-device .blur-3xl {
+  backdrop-filter: none !important;
+  filter: none !important;
+}
