@@ -21,6 +21,7 @@ export function MusicProvider({
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolumeState] = useState(0.4);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const wasPlayingRef = useRef(false);
 
   useEffect(() => {
     audioRef.current = new Audio(audioUrl);
@@ -34,6 +35,57 @@ export function MusicProvider({
     };
   }, [audioUrl]);
 
+  // Handle tab visibility and window focus changes
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        if (isPlaying) {
+          wasPlayingRef.current = true;
+          if (audioRef.current) audioRef.current.pause();
+          setIsPlaying(false);
+        }
+      } else {
+        if (wasPlayingRef.current && audioRef.current) {
+          audioRef.current.play().then(() => {
+            setIsPlaying(true);
+            wasPlayingRef.current = false;
+          }).catch(() => {
+            setIsPlaying(false);
+          });
+        }
+      }
+    };
+
+    const handleWindowBlur = () => {
+      if (isPlaying) {
+        wasPlayingRef.current = true;
+        if (audioRef.current) audioRef.current.pause();
+        setIsPlaying(false);
+      }
+    };
+
+    const handleWindowFocus = () => {
+      if (wasPlayingRef.current && audioRef.current && !document.hidden) {
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
+          wasPlayingRef.current = false;
+        }).catch(() => {
+          setIsPlaying(false);
+        });
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('blur', handleWindowBlur);
+    window.addEventListener('focus', handleWindowFocus);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('blur', handleWindowBlur);
+      window.removeEventListener('focus', handleWindowFocus);
+    };
+  }, [isPlaying]);
+
   const setVolume = (v: number) => {
     setVolumeState(v);
     if (audioRef.current) {
@@ -45,8 +97,8 @@ export function MusicProvider({
     if (!audioRef.current) return;
     audioRef.current.play().then(() => {
       setIsPlaying(true);
+      wasPlayingRef.current = false;
     }).catch(() => {
-      // Browser autoplay restriction
       setIsPlaying(false);
     });
   };
@@ -55,6 +107,7 @@ export function MusicProvider({
     if (!audioRef.current) return;
     audioRef.current.pause();
     setIsPlaying(false);
+    wasPlayingRef.current = false;
   };
 
   const togglePlay = () => {

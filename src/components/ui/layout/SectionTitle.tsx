@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { FADE_UP } from '../../constants/animations';
+import { FADE_UP } from '../../../motion';
 
-interface SectionTitleProps {
+export interface SectionTitleProps {
   title: string;
   subtitle?: string;
   className?: string;
@@ -21,14 +21,9 @@ export default function SectionTitle({ title, subtitle, className = '' }: Sectio
           {subtitle}
         </span>
       )}
-      <h2 className="font-cinzel text-3xl md:text-5xl text-accent font-medium">
+      <h2 className="font-cinzel text-3xl md:text-5xl text-accent font-medium tracking-tight">
         {title}
       </h2>
-      <div className="flex items-center justify-center my-4">
-        <div className="w-12 h-px bg-primary/40"></div>
-        <div className="w-2 h-2 rotate-45 bg-primary mx-3"></div>
-        <div className="w-12 h-px bg-primary/40"></div>
-      </div>
     </motion.div>
   );
 }

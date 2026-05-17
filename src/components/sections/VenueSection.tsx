@@ -1,7 +1,7 @@
-import SectionContainer from '../common/SectionContainer';
-import SectionTitle from '../common/SectionTitle';
-import GlassCard from '../common/GlassCard';
-import PrimaryButton from '../common/PrimaryButton';
+import SectionContainer from '../ui/layout/SectionContainer';
+import SectionTitle from '../ui/layout/SectionTitle';
+import Card from '../ui/cards/Card';
+import Button from '../ui/buttons/Button';
 import { weddingData } from '../../config/weddingData';
 import { BiMap, BiNavigation, BiCalendarPlus } from 'react-icons/bi';
 
@@ -17,7 +17,7 @@ export default function VenueSection() {
 
       <div className="max-w-2xl mx-auto px-4">
         {/* Unified Venue Information & Map Card */}
-        <GlassCard className="flex flex-col p-6 md:p-12 border-primary/40 shadow-xl">
+        <Card variant="glass" className="flex flex-col p-6 md:p-12 border-primary/40 shadow-xl">
           <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary flex items-center justify-center text-primary mb-6 mx-auto">
             <BiMap size={24} />
           </div>
@@ -48,20 +48,20 @@ export default function VenueSection() {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mt-auto">
             <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-              <PrimaryButton variant="solid" className="w-full py-3.5 flex items-center justify-center gap-2 shadow-md">
+              <Button variant="solid" className="w-full py-3.5 flex items-center justify-center gap-2 shadow-md">
                 <BiNavigation size={18} />
                 <span className="text-xs uppercase tracking-wider font-poppins font-medium">Navigate</span>
-              </PrimaryButton>
+              </Button>
             </a>
 
             <a href={calendarUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-              <PrimaryButton variant="glass" className="w-full py-3.5 flex items-center justify-center gap-2 border-primary/60 text-accent hover:bg-primary/20 shadow-sm">
+              <Button variant="glass" className="w-full py-3.5 flex items-center justify-center gap-2 border-primary/60 text-accent hover:bg-primary/20 shadow-sm">
                 <BiCalendarPlus size={18} />
                 <span className="text-xs uppercase tracking-wider font-poppins font-medium">Add to Calendar</span>
-              </PrimaryButton>
+              </Button>
             </a>
           </div>
-        </GlassCard>
+        </Card>
       </div>
     </SectionContainer>
   );

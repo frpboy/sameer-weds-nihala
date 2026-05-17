@@ -5,22 +5,48 @@ import GlassCard from '../common/GlassCard';
 import PrimaryButton from '../common/PrimaryButton';
 import Input from '../ui/Input';
 import Select from '../ui/Select';
-import { BiCheckCircle } from 'react-icons/bi';
+import { BiCheckCircle, BiLoaderAlt } from 'react-icons/bi';
 
 export default function RsvpSection() {
   const [formData, setFormData] = useState({
     fullName: '',
-    attendance: '',
+    attendance: 'yes',
     guestCount: '1',
     dietaryOrNotes: '',
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.attendance) return;
-    setSubmitted(true);
+
+    setIsSubmitting(true);
+    setErrorMsg(null);
+
+    try {
+      const res = await fetch('/api/rsvp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to submit RSVP');
+      }
+
+      setSubmitted(true);
+      setFormData({ fullName: '', attendance: 'yes', guestCount: '1', dietaryOrNotes: '' });
+    } catch (err: any) {
+      console.error('RSVP Error:', err);
+      setErrorMsg(err.message || 'Unable to connect to RSVP server. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const attendanceOptions = [
@@ -43,7 +69,7 @@ export default function RsvpSection() {
       <div className="max-w-2xl mx-auto px-4">
         <GlassCard className="p-8 md:p-12 border-primary/40 shadow-xl relative overflow-hidden">
           {submitted ? (
-            <div className="flex flex-col items-center justify-center text-center py-12">
+            <div className="flex flex-col items-center justify-center text-center py-12 animate-fade-in">
               <BiCheckCircle size={64} className="text-primary mb-6 animate-bounce" />
               <h3 className="font-cinzel text-3xl text-accent font-medium mb-3">Shukran! Thank You</h3>
               <p className="font-poppins text-sm md:text-base text-text/80 font-light mb-8 max-w-md">
@@ -54,7 +80,13 @@ export default function RsvpSection() {
               </PrimaryButton>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
+              {errorMsg && (
+                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 text-xs md:text-sm text-center font-medium">
+                  {errorMsg}
+                </div>
+              )}
+
               <Input
                 label="Full Name"
                 placeholder="Enter your full name"
@@ -88,8 +120,21 @@ export default function RsvpSection() {
               />
 
               <div className="pt-4">
-                <PrimaryButton variant="solid" size="lg" type="submit" className="w-full py-4 text-base shadow-lg">
-                  Confirm RSVP
+                <PrimaryButton 
+                  variant="solid" 
+                  size="lg" 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full py-4 text-base shadow-lg flex items-center justify-center gap-3 disabled:opacity-70"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <BiLoaderAlt size={22} className="animate-spin text-secondary" />
+                      <span>Submitting RSVP...</span>
+                    </>
+                  ) : (
+                    <span>Confirm RSVP</span>
+                  )}
                 </PrimaryButton>
               </div>
             </form>

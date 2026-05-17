@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BiX } from 'react-icons/bi';
 
-interface ModalProps {
+export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
@@ -42,7 +42,7 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
               <h3 className="font-cinzel text-xl text-accent font-medium">{title || ''}</h3>
               <button 
                 onClick={onClose}
-                className="text-primary hover:text-accent transition-colors p-1"
+                className="text-primary hover:text-accent transition-colors p-1 cursor-pointer"
               >
                 <BiX size={28} />
               </button>
