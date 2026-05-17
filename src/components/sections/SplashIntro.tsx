@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import PrimaryButton from '../common/PrimaryButton';
+import Button from '../ui/buttons/Button';
+import { EASE } from '../../motion';
 import { weddingData } from '../../config/weddingData';
 import { useMusic } from '../../providers/MusicProvider';
 import { content } from '../../content';
@@ -24,15 +25,18 @@ export default function SplashIntro({ onEnter }: SplashIntroProps) {
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'unset' : 'hidden';
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
 
   const handleOpen = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     setIsOpen(true);
-    play(); // Auto-start audio gracefully upon user interaction
+    play();
     setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       onEnter();
     }, 800);
   };
@@ -43,7 +47,7 @@ export default function SplashIntro({ onEnter }: SplashIntroProps) {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: EASE.luxury }}
           className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-secondary px-6 text-center select-none overflow-hidden"
         >
           <div className="absolute inset-0 opacity-10 pointer-events-none flex items-center justify-center">
@@ -85,14 +89,14 @@ export default function SplashIntro({ onEnter }: SplashIntroProps) {
               </span>
             </div>
 
-            <PrimaryButton
+            <Button
               variant="solid"
               size="lg"
               onClick={handleOpen}
-              className="min-w-[200px] shadow-lg shadow-primary/20 hover:shadow-xl"
+              className="min-w-[200px] shadow-lg shadow-primary/20 hover:shadow-xl cursor-pointer"
             >
               {content.splash.enterButton}
-            </PrimaryButton>
+            </Button>
           </motion.div>
 
           <div className="absolute bottom-8 left-0 right-0 text-center pointer-events-none">

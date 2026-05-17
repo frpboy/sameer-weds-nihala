@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import SectionContainer from '../common/SectionContainer';
-import SectionTitle from '../common/SectionTitle';
-import GlassCard from '../common/GlassCard';
-import PrimaryButton from '../common/PrimaryButton';
-import Input from '../ui/Input';
-import Select from '../ui/Select';
+import SectionContainer from '../ui/layout/SectionContainer';
+import SectionTitle from '../ui/layout/SectionTitle';
+import Card from '../ui/cards/Card';
+import Button from '../ui/buttons/Button';
+import Input from '../ui/inputs/Input';
+import Select from '../ui/inputs/Select';
 import { BiCheckCircle, BiLoaderAlt } from 'react-icons/bi';
 
 export default function RsvpSection() {
@@ -67,7 +67,7 @@ export default function RsvpSection() {
       <SectionTitle title="Will You Attend?" subtitle="Please reply by July 1st, 2026" />
 
       <div className="max-w-2xl mx-auto px-4">
-        <GlassCard className="p-8 md:p-12 border-primary/40 shadow-xl relative overflow-hidden">
+        <Card variant="glass" className="p-8 md:p-12 border-primary/40 shadow-xl relative overflow-hidden">
           {submitted ? (
             <div className="flex flex-col items-center justify-center text-center py-12 animate-fade-in">
               <BiCheckCircle size={64} className="text-primary mb-6 animate-bounce" />
@@ -75,9 +75,9 @@ export default function RsvpSection() {
               <p className="font-poppins text-sm md:text-base text-text/80 font-light mb-8 max-w-md">
                 Your RSVP has been beautifully received. We are so grateful and can't wait to share our joyful moments with you.
               </p>
-              <PrimaryButton variant="outline" onClick={() => setSubmitted(false)}>
+              <Button variant="outline" onClick={() => setSubmitted(false)}>
                 Submit Another RSVP
-              </PrimaryButton>
+              </Button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
@@ -120,7 +120,7 @@ export default function RsvpSection() {
               />
 
               <div className="pt-4">
-                <PrimaryButton 
+                <Button 
                   variant="solid" 
                   size="lg" 
                   type="submit" 
@@ -135,11 +135,11 @@ export default function RsvpSection() {
                   ) : (
                     <span>Confirm RSVP</span>
                   )}
-                </PrimaryButton>
+                </Button>
               </div>
             </form>
           )}
-        </GlassCard>
+        </Card>
       </div>
     </SectionContainer>
   );

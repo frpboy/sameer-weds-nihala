@@ -15,8 +15,8 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    // Uses environment variable in production, fallback to connection string
-    const databaseUrl = process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_hnfcUw0Wj6Xm@ep-dry-dawn-aopgm14c-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require';
+    // Uses environment variable in production, fallback to full connection string
+    const databaseUrl = process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_hnfcUw0Wj6Xm@ep-dry-dawn-aopgm14c-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require';
     const sql = neon(databaseUrl);
 
     const { fullName, attendance, guestCount, dietaryOrNotes } = req.body;

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Lenis from 'lenis';
+import { JsonLd } from '../seo';
 
 export default function MainLayout() {
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function MainLayout() {
 
   return (
     <div className="relative w-full min-h-screen bg-secondary">
+      <JsonLd />
       <Outlet />
     </div>
   );

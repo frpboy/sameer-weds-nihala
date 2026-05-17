@@ -1,7 +1,7 @@
-import SectionContainer from '../common/SectionContainer';
-import SectionTitle from '../common/SectionTitle';
-import GlassCard from '../common/GlassCard';
-import AnimatedDivider from '../common/AnimatedDivider';
+import SectionContainer from '../ui/layout/SectionContainer';
+import SectionTitle from '../ui/layout/SectionTitle';
+import Card from '../ui/cards/Card';
+import AnimatedDivider from '../ui/layout/AnimatedDivider';
 import { weddingData } from '../../config/weddingData';
 
 export default function InvitationMessage() {
@@ -13,13 +13,7 @@ export default function InvitationMessage() {
       />
 
       <div className="max-w-3xl mx-auto text-center">
-        <GlassCard className="relative p-8 md:p-14 border border-primary/40 shadow-xl">
-          {/* Top corner ornaments */}
-          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-primary/50" />
-          <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-primary/50" />
-          <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-primary/50" />
-          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-primary/50" />
-
+        <Card variant="glass" className="relative p-8 md:p-14 border border-primary/40 shadow-xl">
           <span className="font-cormorant italic text-primary text-xl md:text-2xl mb-4 block">
             "And among His signs is that He created for you mates from among yourselves, that you may find tranquility in them..."
           </span>
@@ -38,7 +32,7 @@ export default function InvitationMessage() {
               <span className="block">{weddingData.bride.fullName}</span>
             </div>
           </div>
-        </GlassCard>
+        </Card>
 
         <div className="mt-12">
           <AnimatedDivider />

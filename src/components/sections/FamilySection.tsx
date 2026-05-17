@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-import SectionContainer from '../common/SectionContainer';
-import SectionTitle from '../common/SectionTitle';
-import GlassCard from '../common/GlassCard';
-import { STAGGER_CONTAINER, FADE_UP } from '../../constants/animations';
+import SectionContainer from '../ui/layout/SectionContainer';
+import SectionTitle from '../ui/layout/SectionTitle';
+import Card from '../ui/cards/Card';
+import { STAGGER_CONTAINER, FADE_UP } from '../../motion';
 
 export default function FamilySection() {
   const families = [
@@ -33,7 +33,7 @@ export default function FamilySection() {
       >
         {families.map((fam) => (
           <motion.div key={fam.title} variants={FADE_UP}>
-            <GlassCard className="p-8 md:p-12 text-center border-primary/30 relative flex flex-col items-center shadow-md">
+            <Card variant="glass" className="p-8 md:p-12 text-center border-primary/30 relative flex flex-col items-center shadow-md">
               <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center mb-6 bg-secondary text-primary">
                 <span className="font-cinzel text-lg">✦</span>
               </div>
@@ -50,7 +50,7 @@ export default function FamilySection() {
               <p className="font-cormorant text-base text-text/90 italic font-light">
                 "May Allah bless this union with boundless joy, harmony, and eternal prosperity."
               </p>
-            </GlassCard>
+            </Card>
           </motion.div>
         ))}
       </motion.div>

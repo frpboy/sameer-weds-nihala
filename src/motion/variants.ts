@@ -18,7 +18,7 @@ export const VARIANTS = {
       transition: { duration: DURATIONS.medium, ease: EASE.luxury }
     }
   }),
-  fadeIn: (reducedMotion = false) => ({
+  fadeIn: () => ({
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1,

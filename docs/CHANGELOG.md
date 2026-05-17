@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.2.0 - Senior Architecture Refinement & Breathtaking Ambient Effects
+- **Unification of Motion Architecture (`src/motion/`)**: Consolidated all fragmented animation constants, timing systems, and legacy variants into a single authoritative motion design system (`src/motion/` with `variants.ts`, `timings.ts`, `easing.ts`, and `presets.ts`). Completely removed duplicate animation folders and legacy constants.
+- **UI Component Layer Consolidation (`src/components/ui/`)**: Refactored and unified duplicate component layers between `common` and `ui` into a highly structured `components/ui/` directory (`buttons/`, `cards/`, `inputs/`, `layout/`, and `overlays/`). Replaced redundant card and button variations with single definitive components featuring flexible variants.
+- **Modular Wedding Domain Configuration (`src/config/wedding/`)**: Re-architected `config/weddingData.ts` into modular domain configuration files (`couple.ts`, `venue.ts`, `social.ts`, `branding.ts`, and `index.ts`), keeping the top-level export intact for seamless backwards compatibility.
+- **SEO & Structured Data Module (`src/seo/`)**: Built dedicated SEO module generating official Schema.org `Event`/`Wedding` JSON-LD structured data and injected it directly into the application layout for premium search engine indexing and social link previews.
+- **Breathtaking Ambient Effects (`src/effects/`)**: Implemented a highly performant, GPU-accelerated ambient effects ecosystem. Features a custom RAF-optimized Gold Dust Cursor (desktop only via fine pointer media query), ultra-slow floating SVG ornaments (< 20 items), soft breathing ambient glow orbs, and multi-layered scroll parallax to provide luxury cinematic depth.
+- **Smart Background Audio Management**: Enhanced `MusicProvider` with automated tab visibility and window focus listeners. Background ambient music automatically pauses when the user switches tabs or changes apps, and gracefully resumes upon focus.
+
 ## v1.1.0 - Enterprise Architecture & Foundational Governance
 - **Centralized Providers (`src/providers/`)**: Established composite root provider architecture incorporating `ThemeProvider`, `LenisProvider`, `MusicProvider`, and `ModalProvider` to govern global UI state, theme tokens, audio playback, and modal gallery interactions.
 - **Unified Motion & Reduced Motion Support**: Centralized animation constants and transition variants in `src/constants/motion.ts`. Implemented `useReducedMotion` hook to respect OS accessibility preferences (`prefers-reduced-motion: reduce`) and optimize battery life on legacy mobile hardware.

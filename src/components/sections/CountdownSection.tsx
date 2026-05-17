@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import SectionContainer from '../common/SectionContainer';
-import SectionTitle from '../common/SectionTitle';
-import GlassCard from '../common/GlassCard';
-import PrimaryButton from '../common/PrimaryButton';
+import SectionContainer from '../ui/layout/SectionContainer';
+import SectionTitle from '../ui/layout/SectionTitle';
+import Card from '../ui/cards/Card';
+import Button from '../ui/buttons/Button';
 import { weddingData } from '../../config/weddingData';
-import { STAGGER_CONTAINER, SCALE_UP, FADE_UP } from '../../constants/animations';
+import { STAGGER_CONTAINER, SCALE_UP, FADE_UP } from '../../motion';
 import { BiCalendarPlus } from 'react-icons/bi';
 
 interface TimeLeft {
@@ -59,14 +59,14 @@ export default function CountdownSection() {
       >
         {timeUnits.map((unit) => (
           <motion.div key={unit.label} variants={SCALE_UP}>
-            <GlassCard className="flex flex-col items-center justify-center p-6 md:p-8 border-primary/30 text-center hover:border-primary/60 transition-colors shadow-md">
+            <Card variant="glass" className="flex flex-col items-center justify-center p-6 md:p-8 border-primary/30 text-center hover:border-primary/60 transition-colors shadow-md">
               <span className="font-cinzel text-4xl md:text-6xl text-accent font-medium mb-2 tracking-tight">
                 {String(unit.value).padStart(2, '0')}
               </span>
               <span className="font-poppins uppercase text-[10px] md:text-xs tracking-[0.25em] text-primary font-medium">
                 {unit.label}
               </span>
-            </GlassCard>
+            </Card>
           </motion.div>
         ))}
       </motion.div>
@@ -80,10 +80,10 @@ export default function CountdownSection() {
         className="flex justify-center"
       >
         <a href={weddingData.wedding.calendarUrl} target="_blank" rel="noopener noreferrer">
-          <PrimaryButton variant="solid" size="lg" className="flex items-center gap-2.5 px-8 py-3.5 shadow-lg">
+          <Button variant="solid" size="lg" className="flex items-center gap-2.5 px-8 py-3.5 shadow-lg cursor-pointer">
             <BiCalendarPlus size={22} />
             <span className="text-sm font-medium tracking-wide">Add to Google Calendar</span>
-          </PrimaryButton>
+          </Button>
         </a>
       </motion.div>
     </SectionContainer>

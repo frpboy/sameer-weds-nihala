@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
-import PrimaryButton from '../common/PrimaryButton';
+import Button from '../ui/buttons/Button';
 import { weddingData } from '../../config/weddingData';
 import { getWhatsAppShareUrl, shareToInstagram } from '../../lib/share';
 
@@ -23,54 +23,63 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative z-10 bg-secondary text-text pt-16 pb-20 px-6 text-center">
+    <footer className="relative z-10 bg-secondary text-text pt-20 pb-24 px-6 text-center">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         {/* Monogram */}
-        <div className="w-16 h-16 rounded-full border border-primary/60 flex items-center justify-center mb-6 bg-secondary shadow-inner">
+        <div className="w-16 h-16 rounded-full border border-primary/60 flex items-center justify-center mb-8 bg-secondary shadow-inner">
           <span className="font-cinzel text-xl text-primary font-medium tracking-tighter">
             {weddingData.monogram}
           </span>
         </div>
 
-        <h2 className="font-cinzel text-3xl md:text-4xl text-accent font-medium mb-2 leading-tight">
+        <h2 className="font-cinzel text-3xl md:text-5xl text-accent font-medium mb-3 leading-tight">
           <span className="block">{weddingData.groom.fullName}</span>
-          <span className="block font-cormorant italic text-primary text-xl md:text-2xl my-1 font-light">&</span>
+          <span className="block font-cormorant italic text-primary text-2xl md:text-3xl my-2 font-light">&</span>
           <span className="block">{weddingData.bride.fullName}</span>
         </h2>
-        <p className="font-poppins uppercase text-xs tracking-[0.25em] text-accent/70 mb-8 font-medium">
+        <p className="font-poppins uppercase text-xs tracking-[0.3em] text-accent/70 mb-12 font-medium">
           Sunday, July 19, 2026 | {weddingData.wedding.venue}
         </p>
 
         {/* Social Share Buttons */}
-        <div className="flex flex-wrap gap-4 justify-center mb-4">
+        <div className="flex flex-wrap gap-4 justify-center mb-6">
           <a href={whatsappShareUrl} target="_blank" rel="noopener noreferrer">
-            <PrimaryButton variant="glass" className="flex items-center gap-2.5 px-6 py-3 shadow-sm border-primary/50 text-accent hover:bg-primary/15 font-medium cursor-pointer">
+            <Button variant="glass" className="flex items-center gap-2.5 px-7 py-3.5 shadow-sm border-primary/50 text-accent hover:bg-primary/15 font-medium cursor-pointer transition-all duration-300">
               <FaWhatsapp size={20} className="text-emerald-600" />
               <span className="text-xs uppercase tracking-wider font-poppins">Share on WhatsApp</span>
-            </PrimaryButton>
+            </Button>
           </a>
 
-          <PrimaryButton 
+          <Button 
             variant="glass" 
             onClick={handleInstagramShare}
-            className="flex items-center gap-2.5 px-6 py-3 shadow-sm border-primary/50 text-accent hover:bg-primary/15 font-medium cursor-pointer"
+            className="flex items-center gap-2.5 px-7 py-3.5 shadow-sm border-primary/50 text-accent hover:bg-primary/15 font-medium cursor-pointer transition-all duration-300"
           >
             <FaInstagram size={20} className="text-rose-600" />
             <span className="text-xs uppercase tracking-wider font-poppins">Share to Instagram</span>
-          </PrimaryButton>
+          </Button>
         </div>
 
-        {/* Toast notification for desktop/clipboard fallback */}
+        {/* Toast notification */}
         <div className="h-8 flex items-center justify-center mb-8">
           {copiedToast && (
-            <span className="font-poppins text-xs text-primary bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-full animate-fade-in">
+            <span className="font-poppins text-xs text-primary bg-primary/10 border border-primary/30 px-5 py-2 rounded-full animate-fade-in shadow-sm">
               Invitation text copied! Redirecting to Instagram...
             </span>
           )}
         </div>
 
+        {/* Emotional Closing Note */}
+        <div className="my-12 px-4 max-w-lg mx-auto">
+          <div className="w-16 h-px bg-primary/40 mx-auto mb-6" />
+          <p className="font-cormorant italic font-light text-2xl md:text-3xl text-accent/90 tracking-wide leading-relaxed">
+            "With prayers, love, and gratitude, we await your presence."
+          </p>
+          <div className="w-16 h-px bg-primary/40 mx-auto mt-6" />
+        </div>
+
         {/* Copyright & Credits */}
-        <div className="font-poppins text-xs text-text/50 tracking-wider font-light space-y-1.5">
+        <div className="font-poppins text-xs text-text/50 tracking-widest font-light space-y-2 mt-8">
           <p>
             Made with love & prayers by{' '}
             <a 

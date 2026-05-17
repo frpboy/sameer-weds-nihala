@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SplashIntro from '../components/sections/SplashIntro';
 import Hero from '../components/sections/Hero';
 import InvitationMessage from '../components/sections/InvitationMessage';
@@ -13,12 +13,23 @@ import FloatingMusicButton from '../components/ui/buttons/FloatingMusicButton';
 export default function Home() {
   const [hasEntered, setHasEntered] = useState(false);
 
+  useEffect(() => {
+    if (!hasEntered) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  }, [hasEntered]);
+
   return (
     <main className="relative w-full min-h-screen bg-secondary selection:bg-primary/20 selection:text-accent font-poppins">
-      <SplashIntro onEnter={() => setHasEntered(true)} />
+      <SplashIntro 
+        onEnter={() => {
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+          setHasEntered(true);
+        }} 
+      />
       
       {/* Main Content */}
-      <div className={`transition-opacity duration-1000 ${hasEntered ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`transition-opacity duration-1000 ${hasEntered ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none h-screen overflow-hidden fixed inset-0'}`}>
         <Hero />
         <InvitationMessage />
         <TimelineSection />
