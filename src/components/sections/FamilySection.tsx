@@ -32,7 +32,7 @@ export default function FamilySection() {
       >
         {families.map((fam) => (
           <motion.div key={fam.title} variants={FADE_UP}>
-            <Card variant="glass" className="p-8 md:p-12 text-center border-primary/30 relative flex flex-col items-center shadow-md">
+            <Card variant="soft" className="p-8 md:p-12 text-center border-primary/30 relative flex flex-col items-center shadow-md">
               <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center mb-6 bg-secondary text-primary">
                 <span className="font-cinzel text-lg">✦</span>
               </div>

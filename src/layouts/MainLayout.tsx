@@ -25,7 +25,7 @@ export default function MainLayout() {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen bg-secondary">
+    <div className="relative w-full min-h-screen bg-transparent">
       <JsonLd />
       <Outlet />
     </div>

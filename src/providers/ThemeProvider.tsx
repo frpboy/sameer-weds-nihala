@@ -1,22 +1,50 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { themeTokens } from '../theme/tokens';
-
-type ThemeMode = 'light' | 'dark' | 'ivory';
+import { themePresets, ThemePreset } from '../theme/presets';
 
 interface ThemeContextType {
-  mode: ThemeMode;
-  setMode: (mode: ThemeMode) => void;
+  presetId: string;
+  preset: ThemePreset;
+  setPresetId: (id: keyof typeof themePresets) => void;
   tokens: typeof themeTokens;
+  availablePresets: ThemePreset[];
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setMode] = useState<ThemeMode>('ivory');
+  const [presetId, setPresetIdState] = useState<string>('royalGold');
+  const preset = themePresets[presetId] || themePresets.royalGold;
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--color-primary', preset.colors.primary);
+    root.style.setProperty('--color-secondary', preset.colors.secondary);
+    root.style.setProperty('--color-accent', preset.colors.accent);
+    root.style.setProperty('--color-text', preset.colors.text);
+  }, [preset]);
+
+  const setPresetId = (id: string) => {
+    if (themePresets[id]) {
+      setPresetIdState(id);
+    }
+  };
 
   return (
-    <ThemeContext.Provider value={{ mode, setMode, tokens: themeTokens }}>
-      <div className={`theme-${mode} min-h-screen bg-secondary font-poppins text-text antialiased selection:bg-primary/20 selection:text-accent`}>
+    <ThemeContext.Provider value={{
+      presetId,
+      preset,
+      setPresetId,
+      tokens: themeTokens,
+      availablePresets: Object.values(themePresets),
+    }}>
+      <div 
+        style={{
+          backgroundColor: preset.colors.secondary,
+          color: preset.colors.text,
+        }}
+        className={`theme-${presetId} min-h-screen font-poppins antialiased selection:bg-primary/20 selection:text-accent transition-colors duration-500`}
+      >
         {children}
       </div>
     </ThemeContext.Provider>

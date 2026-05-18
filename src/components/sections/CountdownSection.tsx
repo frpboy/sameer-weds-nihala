@@ -31,7 +31,7 @@ export default function CountdownSection() {
       >
         {timeUnits.map((unit) => (
           <motion.div key={unit.label} variants={SCALE_UP}>
-            <Card variant="glass" className="flex flex-col items-center justify-center p-6 md:p-8 border-primary/30 text-center hover:border-primary/60 transition-colors shadow-md">
+            <Card variant="flat" className="flex flex-col items-center justify-center p-6 md:p-8 border-primary/30 text-center hover:border-primary/60 transition-colors shadow-md">
               <span className="font-cinzel text-4xl md:text-6xl text-accent font-medium mb-2 tracking-tight">
                 {String(unit.value).padStart(2, '0')}
               </span>

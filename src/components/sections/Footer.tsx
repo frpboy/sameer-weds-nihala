@@ -26,7 +26,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative z-10 bg-secondary text-text pt-20 pb-24 px-6 text-center">
+    <footer className="relative z-10 bg-transparent text-text pt-20 pb-24 px-6 text-center">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         {/* Monogram */}
         <div className="w-16 h-16 rounded-full border border-primary/60 flex items-center justify-center mb-8 bg-secondary shadow-inner">
@@ -36,9 +36,9 @@ export default function Footer() {
         </div>
 
         <h2 className="font-cinzel text-3xl md:text-5xl text-accent font-medium mb-3 leading-tight">
-          <span className="block">{weddingData.groom.fullName}</span>
+          <span className="block">{weddingData.groom.firstName}</span>
           <span className="block font-cormorant italic text-primary text-2xl md:text-3xl my-2 font-light">&</span>
-          <span className="block">{weddingData.bride.fullName}</span>
+          <span className="block">{weddingData.bride.firstName}</span>
         </h2>
         <p className="font-poppins uppercase text-xs tracking-[0.3em] text-accent/70 mb-12 font-medium">
           Sunday, July 19, 2026 | {weddingData.wedding.venue}
@@ -75,8 +75,8 @@ export default function Footer() {
         {/* Emotional Closing Note */}
         <div className="my-12 px-4 max-w-lg mx-auto">
           <div className="w-16 h-px bg-primary/40 mx-auto mb-6" />
-          <p className="font-cormorant italic font-light text-2xl md:text-3xl text-accent/90 tracking-wide leading-relaxed">
-            "With prayers, love, and gratitude, we await your presence."
+          <p className="quote-poetic text-center mb-6">
+            "May Allah bless this union with boundless joy, harmony, and eternal prosperity."
           </p>
           <div className="w-16 h-px bg-primary/40 mx-auto mt-6" />
         </div>

@@ -4,6 +4,7 @@ import Button from '../ui/buttons/Button';
 import { EASE } from '../../motion';
 import { weddingData } from '../../config/weddingData';
 import { useMusic } from '../../providers/MusicProvider';
+import { useMotion } from '../../background';
 import { content } from '../../content';
 
 interface SplashIntroProps {
@@ -14,6 +15,7 @@ export default function SplashIntro({ onEnter }: SplashIntroProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [guestName, setGuestName] = useState<string | null>(null);
   const { play } = useMusic();
+  const { enableMotion } = useMotion();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -35,6 +37,7 @@ export default function SplashIntro({ onEnter }: SplashIntroProps) {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     setIsOpen(true);
     play();
+    enableMotion();
     setTimeout(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       onEnter();
@@ -60,10 +63,10 @@ export default function SplashIntro({ onEnter }: SplashIntroProps) {
             transition={{ duration: 1, ease: 'easeOut' }}
             className="relative z-10 max-w-lg mx-auto flex flex-col items-center"
           >
-            <span className="font-cormorant italic text-lg md:text-xl text-primary mb-6 tracking-wide">
+            <span className="font-cormorant text-2xl md:text-3xl text-primary mb-6 tracking-wide leading-relaxed overflow-visible inline-block px-4">
               ﷽
             </span>
-            <p className="font-cormorant italic text-base md:text-lg text-accent/80 mb-8 tracking-wider">
+            <p className="quote-poetic text-center mb-8">
               "In the name of Allah, the Most Gracious, the Most Merciful"
             </p>
 
@@ -74,9 +77,9 @@ export default function SplashIntro({ onEnter }: SplashIntroProps) {
             </div>
 
             <h1 className="font-cinzel text-2xl md:text-4xl text-accent font-medium mb-2 tracking-wide max-w-md leading-tight">
-              <span className="block">{weddingData.groom.fullName}</span>
+              <span className="block">{weddingData.groom.firstName}</span>
               <span className="block font-cormorant italic text-primary text-xl md:text-2xl my-1 font-light">&</span>
-              <span className="block">{weddingData.bride.fullName}</span>
+              <span className="block">{weddingData.bride.firstName}</span>
             </h1>
             <p className="font-poppins uppercase text-xs md:text-sm tracking-[0.25em] text-primary mb-6 font-medium">
               Wedding Celebration

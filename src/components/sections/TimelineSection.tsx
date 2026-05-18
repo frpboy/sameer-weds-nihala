@@ -53,7 +53,7 @@ export default function TimelineSection() {
 
                 {/* Desktop Left / Right Content */}
                 <div className={`w-full pl-16 md:pl-0 md:w-1/2 ${isEven ? 'md:pr-16 md:text-right md:self-start' : 'md:pl-16 md:ml-auto'}`}>
-                  <Card variant="glass" className="p-6 md:p-8 hover:border-primary/50 transition-colors shadow-md">
+                  <Card variant="flat" className="p-6 md:p-8 hover:border-primary/50 transition-colors shadow-md">
                     <span className="font-poppins uppercase text-xs tracking-widest text-primary font-medium mb-1 block">
                       {event.time}
                     </span>

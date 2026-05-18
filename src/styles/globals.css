@@ -7,6 +7,7 @@
   --color-text: #1A1A1A;
   --font-cinzel: "Cinzel", serif;
   --font-cormorant: "Cormorant Garamond", serif;
+  --font-cormorant-infant: "Cormorant Infant", serif;
   --font-poppins: "Poppins", sans-serif;
   --font-inter: "Inter", sans-serif;
 }
@@ -72,4 +73,21 @@ html.lenis {
 * {
   scrollbar-width: thin;
   scrollbar-color: #C7A97F #F0EBE2;
+}
+
+/* ── Poetic Romantic Quotes ── */
+.quote-poetic {
+  font-family: var(--font-cormorant-infant), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.8;
+  font-size: 1rem;
+  color: #6F5B57;
+  opacity: 0.88;
+}
+@media (min-width: 768px) {
+  .quote-poetic {
+    font-size: 1.35rem;
+  }
 }

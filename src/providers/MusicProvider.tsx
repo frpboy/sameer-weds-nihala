@@ -33,28 +33,56 @@ export function MusicProvider({
     };
   }, [audioUrl]);
 
+  const wasPlayingRef = useRef(false);
+
   // Handle tab visibility and window focus changes
   useEffect(() => {
     const handleVisibilityChange = () => {
-      if (document.hidden && isPlaying) {
-        audioRef.current?.pause();
-        setIsPlaying(false);
+      if (document.hidden) {
+        if (isPlaying) {
+          wasPlayingRef.current = true;
+          audioRef.current?.pause();
+          setIsPlaying(false);
+        }
+      } else {
+        if (wasPlayingRef.current) {
+          audioRef.current?.play().then(() => {
+            setIsPlaying(true);
+            wasPlayingRef.current = false;
+          }).catch(() => {
+            setIsPlaying(false);
+          });
+        }
       }
     };
 
     const handleWindowBlur = () => {
       if (isPlaying) {
+        wasPlayingRef.current = true;
         audioRef.current?.pause();
         setIsPlaying(false);
       }
     };
 
+    const handleWindowFocus = () => {
+      if (wasPlayingRef.current) {
+        audioRef.current?.play().then(() => {
+          setIsPlaying(true);
+          wasPlayingRef.current = false;
+        }).catch(() => {
+          setIsPlaying(false);
+        });
+      }
+    };
+
     document.addEventListener('visibilitychange', handleVisibilityChange);
     window.addEventListener('blur', handleWindowBlur);
+    window.addEventListener('focus', handleWindowFocus);
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('blur', handleWindowBlur);
+      window.removeEventListener('focus', handleWindowFocus);
     };
   }, [isPlaying]);
 

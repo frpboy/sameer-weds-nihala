@@ -1,18 +1,22 @@
 # Technical Requirements Document
 
 ## Architecture & Stack
-- **Framework**: React + Vite
-- **Styling**: Tailwind CSS
+- **Framework**: React 19 + Vite + TypeScript
+- **Immersive 3D**: Three.js + React Three Fiber (R3F) + Drei
+- **Styling**: Tailwind CSS v4 + PostCSS
 - **Animation**: Framer Motion
-- **Routing**: React Router
-- **Scrolling**: Lenis (optional smooth scroll)
-- **Icons**: React Icons
+- **Routing**: Single-page continuous scroll architecture
+- **Scrolling**: Lenis smooth scroll
+- **Icons**: React Icons (Bi, Md, Fa)
+- **Database & API**: Neon PostgreSQL serverless DB + Vercel Serverless Functions
 - **Deployment**: Vercel
 
 ## Animation Approach
 - Use fade-up, slow parallax, blur reveals, smooth opacity transitions, and elegant stagger.
-- Avoid bouncing animations, flashy neon effects, and startup landing page behavior.
-- Wedding sites should feel calm and emotional.
+- **Cinematic 3D Parallax**: Exaggerated mouse depth layers (`4x` / `3y` multipliers) with breathing muted warm emerald particles (`#355C4D`) and soft champagne cursor bloom (`#C7A97F`).
+- **Performance Throttling**: Active monitoring via `usePerformanceMonitor` to throttle canvas frame loops on low-concurrency or low-end mobile devices.
+- Avoid bouncing animations, flashy neon RGB effects, and generic startup landing page behavior.
+- Wedding sites should feel calm, luxurious, and emotional.
 
 ## Responsive Strategy
 - **Mobile-first approach**

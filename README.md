@@ -16,15 +16,15 @@ Designed to evoke calm, emotional resonance, and high-fidelity aesthetics, this 
 | Feature | Description |
 |---|---|
 | 📜 **Splash Calligraphy** | Elegant envelope intro with Surah Ar-Rum, Bismillah, and S&N monogram |
-| ✨ **Parallax Hero** | Mouse-reactive ambient geometry with Cinzel & Cormorant Garamond typography |
+| ✨ **Royal Typography** | Sophisticated ceremonial styling utilizing Cinzel & Cormorant Garamond |
 | ⏳ **Live Countdown** | High-precision countdown to July 19, 2026 — shown in Hero and Countdown section |
-| 🎨 **Mouse Trail** | Golden heart particle trail following cursor movement |
+| ⚡ **Performance Throttling** | `usePerformanceMonitor` dynamically disables heavy effects & RAF loops on low-concurrency devices |
 | 🗺️ **Venue & Navigation** | Google Maps embed + direct routing button (Shifa Convention Center) |
 | 🖼️ **Gallery** | Masonry photo grid with dynamic image loading from local `/public/images/` |
-| 💌 **Live RSVP** | Form → Neon PostgreSQL DB → Live Wishes Wall with real-time guest count |
+| 💌 **Modular Live RSVP** | Form → Neon PostgreSQL DB → Live Wishes Wall with real-time guest count |
 | 🎵 **Ambient Audio** | Floating persistent music player with auto-pause on tab switch / window blur |
 | 📱 **Mobile PWA** | Theme-colored status bar, iOS home screen support, S&N favicon |
-| 📊 **Analytics** | Microsoft Clarity (session recordings + heatmaps) |
+| 🎨 **Theme Presets Engine** | Reusable presets (`royalGold`, `romanticRose`, `editorialIvory`, `emeraldLuxury`) |
 
 ---
 
@@ -91,17 +91,21 @@ sameer-weds-nihala/
 │   └── audio/ambient.mp3     # Background music
 ├── docs/                     # Full architectural documentation (12 docs + CHANGELOG)
 └── src/
+    ├── background/           # AmbientScene, HeroBackground3D (R3F), MouseTrail3D
     ├── components/
-    │   ├── sections/         # HeroContent, CountdownSection, RsvpSection, GallerySection…
-    │   └── ui/               # Button, Card, SectionContainer, SectionTitle…
+    │   ├── sections/         # HeroContent, CountdownSection, GallerySection…
+    │   │   └── rsvp/         # Modular RsvpForm, GuestCounter, WishesWall
+    │   └── ui/               # Button, Card (with flat/soft variants), SectionTitle…
     ├── config/weddingData.ts # Single source of truth for names, dates, venue
     ├── content/              # Centralized UI copy
-    ├── effects/              # MouseTrail (gold hearts), AmbientEffects
-    ├── hooks/                # useCountdown, useReducedMotion
+    ├── hooks/                # useCountdown, useReducedMotion, usePerformanceMonitor
     ├── motion/               # VARIANTS, EASE, STAGGER tokens
     ├── providers/            # Music, Lenis, Modal, Theme providers
     ├── seo/                  # JSON-LD structured data
-    └── styles/globals.css    # Tailwind v4 + themed scrollbar
+    ├── styles/globals.css    # Tailwind v4 + themed scrollbar
+    └── theme/
+        ├── presets/          # royalGold, romanticRose, editorialIvory, emeraldLuxury
+        └── tokens.ts         # Typography & spacing tokens
 ```
 
 ---
@@ -140,10 +144,11 @@ export const couple = {
 | Layer | Technology |
 |---|---|
 | Framework | React 19 + Vite + TypeScript |
+| Immersive 3D | Three.js + React Three Fiber (R3F) + Drei |
 | Styling | Tailwind CSS v4 + PostCSS |
 | Animation | Framer Motion |
 | Smooth Scroll | Lenis |
-| Icons | React Icons (Bi, Md) |
+| Icons | React Icons (Bi, Md, Fa) |
 | Database | Neon PostgreSQL (serverless) |
 | API | Vercel Serverless Functions |
 | Analytics | Microsoft Clarity |

@@ -4,6 +4,32 @@ All notable changes to this project are documented here.
 
 ---
 
+## v3.2.0 — 2026-05-18 | Centralized Adaptive Ambient Motion Engine
+
+- **Exaggerated Cinematic Parallax**: Engineered multi-layered wallpaper depth illusion where distinct 3D groups lag smoothly behind cursor movement with calibrated sweet spot coefficients (`4x` / `3y`, lerped at `0.08`, `0.12`, `0.16`).
+- **Muted Emerald & Champagne Particles**: Replaced low-contrast gold particles with a luxurious 80% muted warm emerald (`#355C4D`) and 20% champagne (`#C7A97F`) color hierarchy at `72%` opacity, ensuring striking contrast against the warm ivory background.
+- **Soft Champagne Cursor Atmosphere**: Added a 250px soft champagne bloom (`#C7A97F`, `18% opacity`) that lags behind cursor movement like heavy silk air, delivering an emotional response to mouse movement.
+- **Cinematic Camera Motion**: Introduced spatial camera shifting inside `useFrame` (`0.8x`, `0.5y`), allowing the entire 3D world to sway organically with user cursor interaction.
+- **Champagne Dust Cursor Trails**: Created `MouseTrail3D.tsx` to dynamically spawn soft glowing, friction-damped champagne dust particles trailing behind cursor movement.
+- **Single-Line Couple Typography**: Upgraded couple name displays across `InvitationMessage`, `SplashIntro`, and `Footer` to use clean `firstName` formatting (`"Mohammed Sameer"` and `"Nihala Jasmin"`), ensuring perfect single-line symmetry without awkward word wraps.
+- **Unclipped Arabic Calligraphy**: Resolved horizontal clipping on the Bismillah ornament (`﷽`) across Windows system font engines by applying `overflow-visible px-4 whitespace-nowrap inline-block` and calibrated responsive scaling (`text-3xl md:text-4xl`).
+- **Unblocked 3D Viewport**: Replaced static `HeroBackground.tsx` overlay circles with a pure transparent gradient, completely unblocking the immersive R3F world view.
+
+---
+
+## v3.1.0 — 2026-05-18 | Architectural Refinements & Elite Aesthetic Polish
+
+- **Visual Hierarchy**: Flattened cards across `CountdownSection`, `TimelineSection`, `FamilySection`, and `InvitationMessage` using new `flat` and `soft` variants to avoid glassmorphism monotony.
+- **Dynamic Performance Safeguards**: Implemented `usePerformanceMonitor` to actively throttle particles, animations, and heavy background effects on low-concurrency or low-end mobile devices.
+- **Lazy Effect Loading**: Delayed mouse trails and ambient glow animations until after DOMContentLoaded and initial paint, significantly boosting Time to Interactive (TTI).
+- **RSVP Modularization**: Split the monolithic `RsvpSection.tsx` into modular components (`RsvpForm`, `GuestCounter`, and `WishesWall`) in `src/components/sections/rsvp/`.
+- **Royal Typography**: Maintained elegant royal serif typography (`Cinzel` and `Cormorant Garamond`) across headings and italic quotes for maximum ceremonial grandeur.
+- **Poetic Quotes**: Implemented `Cormorant Infant` with warm mocha tone (`#6F5B57`) and subtle 88% opacity across all romantic quotes and scripture excerpts (`.quote-poetic`).
+- **Smart Audio Resume**: Enhanced `MusicProvider` with tab visibility and window focus tracking to automatically resume ambient background audio when the user returns to the invitation window.
+- **Dynamic Theme Presets**: Created `src/theme/presets/` with modular palettes (`royalGold`, `romanticRose`, `editorialIvory`, `emeraldLuxury`) dynamically injected through `ThemeProvider`.
+
+---
+
 ## v3.0.0 — 2026-05-18 | Wedding Microsite Re-branding (Sameer & Nihala)
 
 - **Mirrored Codebase**: Adapted established, production-ready premium wedding microsite for Mohammed Sameer Kallangadan (S/o Abdulla Kallangadan & Ramlath OP) & Nihala Jasmin KK (D/o Abdul Azeez).

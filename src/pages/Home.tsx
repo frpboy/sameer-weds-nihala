@@ -20,7 +20,7 @@ export default function Home() {
   }, [hasEntered]);
 
   return (
-    <main className="relative w-full min-h-screen bg-secondary selection:bg-primary/20 selection:text-accent font-poppins">
+    <main className="relative w-full min-h-screen bg-transparent selection:bg-primary/20 selection:text-accent font-poppins">
       <SplashIntro 
         onEnter={() => {
           window.scrollTo({ top: 0, left: 0, behavior: 'instant' });

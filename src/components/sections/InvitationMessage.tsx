@@ -14,7 +14,7 @@ export default function InvitationMessage() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="font-cinzel text-4xl md:text-5xl text-primary/90 mb-4 tracking-widest select-none drop-shadow-[0_2px_10px_rgba(199,169,127,0.3)] font-light"
+          className="font-cormorant text-3xl md:text-4xl text-primary/90 mb-4 tracking-widest select-none drop-shadow-[0_2px_10px_rgba(199,169,127,0.3)] font-light leading-relaxed overflow-visible inline-block px-4"
         >
           ﷽
         </motion.div>
@@ -26,8 +26,8 @@ export default function InvitationMessage() {
       />
 
       <div className="max-w-3xl mx-auto text-center">
-        <Card variant="glass" className="relative p-8 md:p-14 border border-primary/40 shadow-xl">
-          <span className="font-cormorant italic text-primary text-xl md:text-2xl mb-4 block">
+        <Card variant="soft" className="relative p-8 md:p-14 border border-primary/40 shadow-xl">
+          <span className="quote-poetic block mb-4">
             "And among His signs is that He created for you mates from among yourselves, that you may find tranquility in them..."
           </span>
           <span className="font-poppins text-xs tracking-[0.2em] uppercase text-accent/70 block mb-10">
@@ -38,10 +38,10 @@ export default function InvitationMessage() {
             We invite you to share in our joy and celebrate the sacred union of our hearts. Your presence and heartfelt prayers will make our celebration complete as we embark on this blessed journey together.
           </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mt-12">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mt-12 whitespace-nowrap">
             <div className="flex flex-col items-center text-center max-w-xs">
               <span className="font-cinzel text-xl md:text-2xl text-accent font-medium leading-snug">
-                {weddingData.groom.fullName}
+                {weddingData.groom.firstName}
               </span>
             </div>
             <div className="font-cormorant italic text-primary text-2xl md:text-3xl font-light my-4 md:my-0 select-none">
@@ -49,7 +49,7 @@ export default function InvitationMessage() {
             </div>
             <div className="flex flex-col items-center text-center max-w-xs">
               <span className="font-cinzel text-xl md:text-2xl text-accent font-medium leading-snug">
-                {weddingData.bride.fullName}
+                {weddingData.bride.firstName}
               </span>
             </div>
           </div>
