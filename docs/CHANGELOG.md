@@ -4,6 +4,16 @@ All notable changes to this project are documented here.
 
 ---
 
+## v3.5.0 — 2026-05-19 | Content Personalization & Event Context Corrections
+
+- **Invitation Verse Visibility + Source Sync**: Updated `InvitationMessage.tsx` to consume centralized `content.invitation` fields (`verse`, `verseRef`, `body`) and increased verse readability with stronger contrast and weight.
+- **Unique Family Blessings**: Replaced duplicated blessing copy in `FamilySection` with distinct lines for groom and bride families while preserving the same visual style and spacing structure.
+- **Footer Blessing Refresh**: Replaced the repeated closing dua line with a new original phrasing to avoid duplicate project language.
+- **Footer Credit Line Adjustment**: Updated the sentence before the author credit while keeping `Rahul` and the existing GitHub hyperlink unchanged.
+- **Marriage/Reception Context Fix**: Removed outdated nikah wording from invitation copy and updated timeline phrasing to reflect the current event context (`Marriage & Reception`) since nikah occurred in the previous year.
+
+---
+
 ## v3.4.0 — 2026-05-19 | Ambient Heart Cluster Alignment Pass
 
 - **Reference-Matched Heart Behavior**: Reworked the initial cursor-follow heart trail approach into grouped icon behavior after visual comparison against the cloned reference project.
