@@ -12,6 +12,8 @@ All notable changes to this project are documented here.
 - **Gallery**: Replaced hardcoded image file names with dynamic `import.meta.glob('/public/images/*')` loading.
 - **Database & RSVP**: Updated `.env` with new Neon PostgreSQL connection string and initialized `rsvps` table structure.
 - **Metadata**: Updated SEO, PWA, and OpenGraph tags for Sameer & Nihala.
+- **Invitation Card UX**: Removed redundant parent details and address lines from the invitation card layout (`InvitationMessage.tsx`), as complete family details are featured in the dedicated "With Heartfelt Blessings" footer section.
+- **Audio Experience**: Integrated tab visibility and window blur event listeners (`MusicProvider.tsx`) to auto-pause background music when the browser window loses focus or the active tab is switched.
 
 ---
 

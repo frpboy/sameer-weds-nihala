@@ -22,7 +22,7 @@ Designed to evoke calm, emotional resonance, and high-fidelity aesthetics, this 
 | 🗺️ **Venue & Navigation** | Google Maps embed + direct routing button (Shifa Convention Center) |
 | 🖼️ **Gallery** | Masonry photo grid with dynamic image loading from local `/public/images/` |
 | 💌 **Live RSVP** | Form → Neon PostgreSQL DB → Live Wishes Wall with real-time guest count |
-| 🎵 **Ambient Audio** | Floating persistent music player |
+| 🎵 **Ambient Audio** | Floating persistent music player with auto-pause on tab switch / window blur |
 | 📱 **Mobile PWA** | Theme-colored status bar, iOS home screen support, S&N favicon |
 | 📊 **Analytics** | Microsoft Clarity (session recordings + heatmaps) |
 
