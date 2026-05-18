@@ -3,20 +3,19 @@ import SectionContainer from '../ui/layout/SectionContainer';
 import SectionTitle from '../ui/layout/SectionTitle';
 import Card from '../ui/cards/Card';
 import { STAGGER_CONTAINER, FADE_UP } from '../../motion';
+import { weddingData } from '../../config/weddingData';
 
 export default function FamilySection() {
   const families = [
     {
-      title: 'The Groom\'s Family',
-      parents: 'Mr. & Mrs. Groom Father Name',
-      grandparents: 'Grandparents Blessing Note',
-      residence: 'Groom Residence / House Name',
+      title: "The Groom's Family",
+      parents: weddingData.groom.parents,
+      residence: weddingData.groom.address,
     },
     {
-      title: 'The Bride\'s Family',
-      parents: 'Mr. & Mrs. Bride Father Name',
-      grandparents: 'Grandparents Blessing Note',
-      residence: 'Bride Residence / House Name',
+      title: "The Bride's Family",
+      parents: weddingData.bride.parents,
+      residence: weddingData.bride.address,
     },
   ];
 

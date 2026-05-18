@@ -45,7 +45,7 @@ export default function InvitationMessage() {
               </span>
               {'parents' in weddingData.groom && weddingData.groom.parents && (
                 <span className="font-poppins text-xs md:text-sm text-text/80 mt-1.5 font-normal tracking-wide">
-                  {weddingData.groom.parents}
+                  {'relation' in weddingData.groom ? `${weddingData.groom.relation} ` : ''}{weddingData.groom.parents}
                 </span>
               )}
               {'address' in weddingData.groom && weddingData.groom.address && (
@@ -65,7 +65,7 @@ export default function InvitationMessage() {
               </span>
               {'parents' in weddingData.bride && weddingData.bride.parents && (
                 <span className="font-poppins text-xs md:text-sm text-text/80 mt-1.5 font-normal tracking-wide">
-                  {weddingData.bride.parents}
+                  {'relation' in weddingData.bride ? `${weddingData.bride.relation} ` : ''}{weddingData.bride.parents}
                 </span>
               )}
               {'address' in weddingData.bride && weddingData.bride.address && (
