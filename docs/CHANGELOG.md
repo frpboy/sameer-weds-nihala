@@ -4,6 +4,26 @@ All notable changes to this project are documented here.
 
 ---
 
+## v3.4.0 — 2026-05-19 | Ambient Heart Cluster Alignment Pass
+
+- **Reference-Matched Heart Behavior**: Reworked the initial cursor-follow heart trail approach into grouped icon behavior after visual comparison against the cloned reference project.
+- **Clustered Icon Bursts**: Iteratively tuned heart emission from loose trail points into compact grouped bursts for stronger icon density and clearer motif readability.
+- **Dual Ambient Heart Constellations**: Finalized the effect as two elegant side clusters (left and right of the hero center) with soft orbital drift, matching the reference composition style more closely than cursor-attached trails.
+- **Palette & Styling Consistency**: Preserved non-red wedding-safe tones (champagne, beige, ivory), subtle glow, and lightweight motion to keep visual harmony with the existing invitation aesthetic.
+- **Implementation File**: `src/background/MouseTrailOverlay.tsx` now owns the grouped ambient heart system rendered at app level.
+
+---
+
+## v3.3.0 — 2026-05-19 | Family Section Precision Pass & Visible Heart Cursor Trail
+
+- **Bride's Parent Detail Updated**: Added the bride’s mother name in the canonical wedding config (`Abdul Azeez & Rasiya EP`) so the Family card now reflects the latest approved content.
+- **Uniform Family Card Dimensions**: Refined `FamilySection` card layout to enforce equal visual size in all aspects (matching height, balanced internal spacing, and normalized content slot heights for parent name, residence, and blessing quote blocks).
+- **Project-Wide Mouse Trail Overlay**: Promoted trail rendering to the app root layer to guarantee full-page visibility across the entire microsite instead of being constrained by lower background stacking contexts.
+- **Heart-Shaped Cursor Trail (Non-Red Palette)**: Replaced subtle dot trail with visible heart glyph trail using wedding-theme colors (champagne gold, warm beige, ivory, muted emerald) while intentionally avoiding red.
+- **Trail Visibility Reliability**: Increased overlay priority (`z-[60]`) and relaxed activation constraints to ensure the effect appears on desktop/fine-pointer environments.
+
+---
+
 ## v3.2.0 — 2026-05-18 | Centralized Adaptive Ambient Motion Engine
 
 - **Exaggerated Cinematic Parallax**: Engineered multi-layered wallpaper depth illusion where distinct 3D groups lag smoothly behind cursor movement with calibrated sweet spot coefficients (`4x` / `3y`, lerped at `0.08`, `0.12`, `0.16`).

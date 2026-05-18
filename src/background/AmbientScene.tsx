@@ -6,7 +6,7 @@ const AmbientScene = memo(function AmbientScene() {
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none" aria-hidden="true">
       <NoiseOverlay />
     </div>
-  );
+);
 });
 
 export default AmbientScene;

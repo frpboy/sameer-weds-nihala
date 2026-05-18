@@ -14,7 +14,7 @@ export const couple = {
     lastName: "KK",
     shortName: "Nihala",
     relation: "D/o",
-    parents: "Abdul Azeez",
+    parents: "Abdul Azeez & Rasiya EP",
     address: "Karukulam (H), Puliyanamkunnu (P.O), Chalavara via, Palakkad dist - 679505",
   },
   coupleName: "Sameer & Nihala",

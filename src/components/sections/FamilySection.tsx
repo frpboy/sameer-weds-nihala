@@ -11,11 +11,13 @@ export default function FamilySection() {
       title: "The Groom's Family",
       parents: weddingData.groom.parents,
       residence: weddingData.groom.address,
+      blessing: "May Allah fill this sacred bond with mercy, steadfast love, and lasting barakah.",
     },
     {
       title: "The Bride's Family",
       parents: weddingData.bride.parents,
       residence: weddingData.bride.address,
+      blessing: "May this blessed union be wrapped in peace, guided by faith, and crowned with lifelong joy.",
     },
   ];
 
@@ -31,23 +33,23 @@ export default function FamilySection() {
         className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
       >
         {families.map((fam) => (
-          <motion.div key={fam.title} variants={FADE_UP}>
-            <Card variant="soft" className="p-8 md:p-12 text-center border-primary/30 relative flex flex-col items-center shadow-md">
+          <motion.div key={fam.title} variants={FADE_UP} className="h-full">
+            <Card variant="soft" className="h-full min-h-[390px] p-8 md:p-12 text-center border-primary/30 relative flex flex-col items-center shadow-md">
               <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center mb-6 bg-secondary text-primary">
                 <span className="font-cinzel text-lg">✦</span>
               </div>
               <span className="font-poppins uppercase text-xs tracking-widest text-primary font-medium mb-3 block">
                 {fam.title}
               </span>
-              <h3 className="font-cinzel text-2xl text-accent font-medium mb-2">
+              <h3 className="font-cinzel text-2xl text-accent font-medium mb-2 min-h-[96px] flex items-center justify-center">
                 {fam.parents}
               </h3>
-              <p className="font-poppins text-xs text-text/70 mb-6 italic">
+              <p className="font-poppins text-xs text-text/70 mb-6 italic min-h-[44px]">
                 {fam.residence}
               </p>
               <div className="w-16 h-px bg-primary/40 my-4" />
-              <p className="font-cormorant text-base text-text/90 italic font-light">
-                "May Allah bless this union with boundless joy, harmony, and eternal prosperity."
+              <p className="font-cormorant text-[1.08rem] text-accent/85 italic font-medium min-h-[72px]">
+                {`"${fam.blessing}"`}
               </p>
             </Card>
           </motion.div>

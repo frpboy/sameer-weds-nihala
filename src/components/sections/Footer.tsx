@@ -76,7 +76,7 @@ export default function Footer() {
         <div className="my-12 px-4 max-w-lg mx-auto">
           <div className="w-16 h-px bg-primary/40 mx-auto mb-6" />
           <p className="quote-poetic text-center mb-6">
-            "May Allah bless this union with boundless joy, harmony, and eternal prosperity."
+            "May Allah shower this marriage with mercy, deepen their love, and grant them a lifetime of peace."
           </p>
           <div className="w-16 h-px bg-primary/40 mx-auto mt-6" />
         </div>
@@ -84,7 +84,7 @@ export default function Footer() {
         {/* Copyright & Credits */}
         <div className="font-poppins text-xs text-text/50 tracking-widest font-light space-y-2 mt-8">
           <p>
-            Made with love & prayers by{' '}
+            Crafted with heartfelt duas by{' '}
             <a 
               href="https://github.com/frpboy" 
               target="_blank" 

@@ -12,9 +12,9 @@ export const content = {
   invitation: {
     sectionTitle: "The Invitation",
     sectionSubtitle: "With the blessings of Allah & our beloved families",
-    verse: `"And among His signs is that He created for you mates from among yourselves, that you may find tranquility in them..."`,
+    verse: `"From His signs is this: He created spouses for you from your own kind, so that your hearts may find peace and comfort in one another."`,
     verseRef: "— Surah Ar-Rum 30:21",
-    body: "We invite you to share in our joy and celebrate the sacred union of our hearts. Your presence and heartfelt prayers will make our celebration complete as we embark on this blessed journey together.",
+    body: "With gratitude to Allah, we warmly invite you to celebrate our marriage and reception. Your presence, blessings, and sincere duas will make this joyous gathering even more meaningful for our families.",
   },
   timeline: {
     sectionTitle: "Wedding Schedule",
@@ -22,8 +22,8 @@ export const content = {
     events: [
       {
         time: "11:00 AM",
-        title: "Wedding Nikah & Reception",
-        description: "The sacred ceremony followed by a celebratory feast.",
+        title: "Marriage & Reception",
+        description: "A joyful celebration with family, prayers, and a festive gathering.",
       },
     ],
   },

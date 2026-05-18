@@ -4,6 +4,7 @@ import SectionTitle from '../ui/layout/SectionTitle';
 import Card from '../ui/cards/Card';
 import AnimatedDivider from '../ui/layout/AnimatedDivider';
 import { weddingData } from '../../config/weddingData';
+import { content } from '../../content';
 
 export default function InvitationMessage() {
   return (
@@ -27,15 +28,15 @@ export default function InvitationMessage() {
 
       <div className="max-w-3xl mx-auto text-center">
         <Card variant="soft" className="relative p-8 md:p-14 border border-primary/40 shadow-xl">
-          <span className="quote-poetic block mb-4">
-            "And among His signs is that He created for you mates from among yourselves, that you may find tranquility in them..."
+          <span className="quote-poetic block mb-4 text-accent/75 font-medium">
+            {content.invitation.verse}
           </span>
-          <span className="font-poppins text-xs tracking-[0.2em] uppercase text-accent/70 block mb-10">
-            — Surah Ar-Rum 30:21
+          <span className="font-poppins text-xs tracking-[0.2em] uppercase text-accent/85 font-medium block mb-10">
+            {content.invitation.verseRef}
           </span>
 
           <p className="font-poppins text-sm md:text-base leading-relaxed text-text/90 mb-8 font-light">
-            We invite you to share in our joy and celebrate the sacred union of our hearts. Your presence and heartfelt prayers will make our celebration complete as we embark on this blessed journey together.
+            {content.invitation.body}
           </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mt-12 whitespace-nowrap">
