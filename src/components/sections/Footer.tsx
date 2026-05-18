@@ -6,15 +6,15 @@ import { getWhatsAppShareUrl, shareToInstagram } from '../../lib/share';
 
 export default function Footer() {
   const [instagramToast, setInstagramToast] = useState<'copied' | null>(null);
-  const webLink = 'https://shabin-weds-sana.vercel.app/';
-  const rawMessage = `You are joyfully invited to the wedding celebration of Muhammed Shabin & Sana Subair on Sunday, July 19, 2026 at ${weddingData.wedding.venue}.\n\nView details & RSVP: ${webLink}`;
+  const webLink = 'https://sameer-weds-nihala.vercel.app/';
+  const rawMessage = `You are joyfully invited to the wedding celebration of Mohammed Sameer & Nihala Jasmin KK on Sunday, July 19, 2026 at ${weddingData.wedding.venue}.\n\nView details & RSVP: ${webLink}`;
   
   const whatsappShareUrl = getWhatsAppShareUrl(rawMessage);
 
 
   const handleInstagramShare = async () => {
     const result = await shareToInstagram(
-      `You are joyfully invited to the wedding celebration of Muhammed Shabin & Sana Subair on Sunday, July 19, 2026 at ${weddingData.wedding.venue}.`,
+      `You are joyfully invited to the wedding celebration of Mohammed Sameer & Nihala Jasmin KK on Sunday, July 19, 2026 at ${weddingData.wedding.venue}.`,
       webLink
     );
     if (result === 'copied') {

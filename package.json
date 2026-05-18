@@ -1,5 +1,5 @@
 {
-  "name": "shabin-weds-sana",
+  "name": "sameer-weds-nihala",
   "version": "1.0.0",
   "description": "An elegant premium wedding invitation microsite built with React, Vite, Tailwind CSS, and Framer Motion.",
   "main": "index.js",
@@ -17,16 +17,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/frpboy/shabin-weds-sana.git"
+    "url": "git+https://github.com/frpboy/sameer-weds-nihala.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/frpboy/shabin-weds-sana/issues"
+    "url": "https://github.com/frpboy/sameer-weds-nihala/issues"
   },
-  "homepage": "https://github.com/frpboy/shabin-weds-sana#readme",
+  "homepage": "https://github.com/frpboy/sameer-weds-nihala#readme",
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
     "framer-motion": "^12.38.0",

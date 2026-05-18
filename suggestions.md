@@ -7,7 +7,7 @@ Lenis (optional smooth scroll)
 React Icons
 Vercel deployment
 Initial Folder Structure
-shabin-weds-sana/
+sameer-weds-nihala/
 │
 ├── public/
 │   ├── images/
@@ -58,13 +58,13 @@ Start with this immediately.
 
 export const weddingData = {
   groom: {
-    firstName: "Muhammed",
-    lastName: "Shabin",
+    firstName: "Mohammed",
+    lastName: "Sameer",
   },
 
   bride: {
-    firstName: "",
-    lastName: "Sana",
+    firstName: "Nihala",
+    lastName: "Jasmin",
   },
 
   wedding: {
@@ -183,7 +183,7 @@ Future you will thank you.
 
 Vercel Project Name
 
-shabin-weds-sana
+sameer-weds-nihala
 
 Deployment:
 Vercel

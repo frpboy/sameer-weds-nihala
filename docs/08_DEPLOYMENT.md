@@ -8,7 +8,7 @@
 - [ ] `npm run build` passes with zero TypeScript errors
 - [ ] OG image URL updated in `index.html` to match Vercel deployment URL
 - [ ] Microsoft Clarity project ID in `index.html` is correct (`wsl77zfey5`)
-- [ ] Favicon SVG renders correctly at `https://shabin-weds-sana.vercel.app/favicon/favicon.svg`
+- [ ] Favicon SVG renders correctly at `https://sameer-weds-nihala.vercel.app/favicon/favicon.svg`
 
 ## Local → Production Flow
 
@@ -49,8 +49,8 @@ No additional configuration needed.
 
 - `theme-color: #141412` — colors Android Chrome toolbar charcoal
 - `apple-mobile-web-app-capable` — enables iOS full-screen when added to home screen
-- `apple-mobile-web-app-title: "Shabin & Sana"` — iOS home screen label
-- Favicon: `/public/favicon/favicon.svg` (S&S circular gold emblem)
+- `apple-mobile-web-app-title: "Sameer & Nihala"` — iOS home screen label
+- Favicon: `/public/favicon/favicon.svg` (S&N circular gold emblem)
 
 ## Analytics
 

@@ -7,10 +7,10 @@
 - Ensure elegant metadata presentation
 
 ## Meta Title Format
-Muhammed Shabin Weds Sana | Wedding Invitation
+Sameer & Nihala | Wedding Invitation
 
 ## Meta Description
-Elegant digital wedding invitation for Muhammed Shabin & Sana.
+Elegant digital wedding invitation for Mohammed Sameer Kallangadan & Nihala Jasmin KK.
 
 ## Open Graph Requirements
 - OG Image Size: 1200x630

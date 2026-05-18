@@ -1,6 +1,6 @@
-const calendarTitle = encodeURIComponent("Wedding Celebration: Muhammed Shabin & Sana Subair");
+const calendarTitle = encodeURIComponent("Wedding Celebration: Mohammed Sameer & Nihala Jasmin KK");
 const calendarDetails = encodeURIComponent(
-  "You are joyfully invited to celebrate the wedding of Muhammed Shabin & Sana Subair.\n\nDate: Sunday, July 19, 2026\nTime: 11:00 AM IST\nVenue: Shifa Convention Center\nGoogle Maps: https://maps.app.goo.gl/JDr5v3dgUuwPNbnJA\n\nWe look forward to your presence and heartfelt prayers."
+  "You are joyfully invited to celebrate the wedding of Mohammed Sameer Kallangadan & Nihala Jasmin KK.\n\nDate: Sunday, July 19, 2026\nTime: 11:00 AM IST\nVenue: Shifa Convention Center\nGoogle Maps: https://maps.app.goo.gl/JDr5v3dgUuwPNbnJA\n\nWe look forward to your presence and heartfelt prayers."
 );
 const calendarLocation = encodeURIComponent("Shifa Convention Center, Perinthalmanna, Kerala");
 

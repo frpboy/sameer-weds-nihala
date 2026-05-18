@@ -5,7 +5,7 @@ import { getWhatsAppShareUrl } from '../lib/share';
 describe('Foundational Utilities & Link Generation', () => {
   it('should generate valid Google Calendar URL', () => {
     const url = generateGoogleCalendarUrl({
-      title: 'Wedding Nikah: Shabin & Sana',
+      title: 'Wedding Nikah: Sameer & Nihala',
       details: 'Blessed wedding celebration',
       location: 'Shifa Convention Center, Perinthalmanna',
       startDateIso: '2026-07-19T11:00:00+05:30',
@@ -13,7 +13,7 @@ describe('Foundational Utilities & Link Generation', () => {
     });
 
     expect(url).toContain('https://calendar.google.com/calendar/render');
-    expect(url).toContain('Shabin');
+    expect(url).toContain('Sameer');
     expect(url).toContain('Shifa%20Convention%20Center');
   });
 

@@ -10,7 +10,7 @@ export async function shareToInstagram(text: string, url: string): Promise<'nati
   if (typeof navigator.share === 'function') {
     try {
       await navigator.share({
-        title: 'Shabin & Sana — Wedding Invitation',
+        title: 'Sameer & Nihala — Wedding Invitation',
         text: shareText,
         url: url,
       });

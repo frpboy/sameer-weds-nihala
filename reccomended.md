@@ -35,7 +35,7 @@ Example
 # Product Requirements Document
 
 ## Product Name
-Shabin Weds Sana
+Sameer Weds Nihala
 
 ## Vision
 Create an elegant premium wedding invitation microsite optimized for mobile sharing and emotional engagement.

@@ -38,11 +38,41 @@ export default function InvitationMessage() {
             We invite you to share in our joy and celebrate the sacred union of our hearts. Your presence and heartfelt prayers will make our celebration complete as we embark on this blessed journey together.
           </p>
 
-          <div className="flex flex-col items-center mt-8">
-            <div className="font-cinzel text-xl md:text-2xl text-accent font-medium leading-snug">
-              <span className="block">{weddingData.groom.fullName}</span>
-              <span className="block font-cormorant italic text-primary text-lg md:text-xl my-1 font-light">&</span>
-              <span className="block">{weddingData.bride.fullName}</span>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mt-12">
+            <div className="flex flex-col items-center text-center max-w-xs">
+              <span className="font-cinzel text-xl md:text-2xl text-accent font-medium leading-snug">
+                {weddingData.groom.fullName}
+              </span>
+              {'parents' in weddingData.groom && weddingData.groom.parents && (
+                <span className="font-poppins text-xs md:text-sm text-text/80 mt-1.5 font-normal tracking-wide">
+                  {weddingData.groom.parents}
+                </span>
+              )}
+              {'address' in weddingData.groom && weddingData.groom.address && (
+                <span className="font-poppins text-xs text-text/60 mt-0.5 font-light leading-relaxed">
+                  {weddingData.groom.address}
+                </span>
+              )}
+            </div>
+
+            <div className="font-cormorant italic text-primary text-2xl md:text-3xl font-light my-4 md:my-0 select-none">
+              &
+            </div>
+
+            <div className="flex flex-col items-center text-center max-w-xs">
+              <span className="font-cinzel text-xl md:text-2xl text-accent font-medium leading-snug">
+                {weddingData.bride.fullName}
+              </span>
+              {'parents' in weddingData.bride && weddingData.bride.parents && (
+                <span className="font-poppins text-xs md:text-sm text-text/80 mt-1.5 font-normal tracking-wide">
+                  {weddingData.bride.parents}
+                </span>
+              )}
+              {'address' in weddingData.bride && weddingData.bride.address && (
+                <span className="font-poppins text-xs text-text/60 mt-0.5 font-light leading-relaxed">
+                  {weddingData.bride.address}
+                </span>
+              )}
             </div>
           </div>
         </Card>

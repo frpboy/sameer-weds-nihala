@@ -9,14 +9,25 @@ export default function GallerySection() {
   const [direction, setDirection] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  const photos = [
-    { id: 1, url: '/images/Indhira-Jason-Wedding-23-ea0654d1228142eeab611e87d3f27e40.webp', caption: 'Sacred Vows' },
-    { id: 2, url: '/images/JackandVivian-KellyHornberger-111-738f6a7872c648bcb69efd1932148ed0.webp', caption: 'Blessed Union' },
-    { id: 3, url: '/images/AFTERCEREMONY-45-a52a8b106fd34d989e3a4de7c4388e70.webp', caption: 'Cherished Moments' },
-    { id: 4, url: '/images/Wedding-Pose-Caroline-Tran-fd7be81338bc477b9a432061babc1283.webp', caption: 'Elegant Attire' },
-    { id: 5, url: '/images/Wedding-Pose-FOR-THE-LOVE-OF-IT-81f2ea6b25ce4902b553c425779388c5.webp', caption: 'Together Forever' },
-    { id: 6, url: '/images/Portraits-41-342c5ab4e22147cc84bad49a43f2e952.webp', caption: 'Endless Love' },
+  const imageFiles = import.meta.glob('/public/images/*.{webp,jpg,jpeg,png}');
+  const defaultCaptions = [
+    'Sacred Vows',
+    'Blessed Union',
+    'Cherished Moments',
+    'Elegant Attire',
+    'Together Forever',
+    'Endless Love',
+    'Captured Grace',
+    'Eternal Promise',
+    'Joyful Heart',
+    'Pure Bliss',
   ];
+
+  const photos = Object.keys(imageFiles).map((path, index) => ({
+    id: index + 1,
+    url: path.replace('/public', ''),
+    caption: defaultCaptions[index % defaultCaptions.length],
+  }));
 
   useEffect(() => {
     if (isHovered) return;

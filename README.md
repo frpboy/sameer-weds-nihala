@@ -1,9 +1,9 @@
-# 💍 Shabin & Sana | Premium Wedding Invitation Microsite
+# 💍 Sameer & Nihala | Premium Wedding Invitation Microsite
 
-> An elegant, mobile-first digital wedding invitation microsite for **Muhammed Shabin & Sana Subair**, crafted with React, Vite, Tailwind CSS (v4), and Framer Motion. Deployed on Vercel with a live Neon PostgreSQL RSVP backend.
+> An elegant, mobile-first digital wedding invitation microsite for **Mohammed Sameer Kallangadan (S/o Abdulla Kallangadan & Ramlath OP) & Nihala Jasmin KK (D/o Abdul Azeez)**, crafted with React, Vite, Tailwind CSS (v4), and Framer Motion. Deployed on Vercel with a live Neon PostgreSQL RSVP backend.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ffrpboy%2Fshabin-weds-sana)
-[![Live Site](https://img.shields.io/badge/Live%20Site-shabin--weds--sana.vercel.app-brightgreen)](https://shabin-weds-sana.vercel.app/)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ffrpboy%2Fsameer-weds-nihala)
+[![Live Site](https://img.shields.io/badge/Live%20Site-sameer--weds--nihala.vercel.app-brightgreen)](https://sameer-weds-nihala.vercel.app/)
 
 ---
 
@@ -15,15 +15,15 @@ Designed to evoke calm, emotional resonance, and high-fidelity aesthetics, this 
 
 | Feature | Description |
 |---|---|
-| 📜 **Splash Calligraphy** | Elegant envelope intro with Surah Ar-Rum, Bismillah, and S&S monogram |
+| 📜 **Splash Calligraphy** | Elegant envelope intro with Surah Ar-Rum, Bismillah, and S&N monogram |
 | ✨ **Parallax Hero** | Mouse-reactive ambient geometry with Cinzel & Cormorant Garamond typography |
 | ⏳ **Live Countdown** | High-precision countdown to July 19, 2026 — shown in Hero and Countdown section |
 | 🎨 **Mouse Trail** | Golden heart particle trail following cursor movement |
-| 🗺️ **Venue & Navigation** | Google Maps embed + direct routing button |
-| 🖼️ **Gallery** | Masonry photo grid with lightbox from local `/public/images/` |
+| 🗺️ **Venue & Navigation** | Google Maps embed + direct routing button (Shifa Convention Center) |
+| 🖼️ **Gallery** | Masonry photo grid with dynamic image loading from local `/public/images/` |
 | 💌 **Live RSVP** | Form → Neon PostgreSQL DB → Live Wishes Wall with real-time guest count |
 | 🎵 **Ambient Audio** | Floating persistent music player |
-| 📱 **Mobile PWA** | Theme-colored status bar, iOS home screen support, S&S favicon |
+| 📱 **Mobile PWA** | Theme-colored status bar, iOS home screen support, S&N favicon |
 | 📊 **Analytics** | Microsoft Clarity (session recordings + heatmaps) |
 
 ---
@@ -38,8 +38,8 @@ Designed to evoke calm, emotional resonance, and high-fidelity aesthetics, this 
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/frpboy/shabin-weds-sana.git
-   cd shabin-weds-sana
+   git clone https://github.com/frpboy/sameer-weds-nihala.git
+   cd sameer-weds-nihala
    ```
 
 2. **Install dependencies**:
@@ -47,7 +47,7 @@ Designed to evoke calm, emotional resonance, and high-fidelity aesthetics, this 
    npm install
    ```
 
-3. **Set up environment variables** — create a `.env` file:
+3. **Set up environment variables** — create/update `.env` file:
    ```env
    DATABASE_URL=postgresql://...your-neon-connection-string...
    ```
@@ -81,12 +81,12 @@ Designed to evoke calm, emotional resonance, and high-fidelity aesthetics, this 
 ## 📂 Project Architecture
 
 ```
-shabin-weds-sana/
+sameer-weds-nihala/
 ├── api/
 │   └── rsvp.ts               # Vercel serverless: GET (fetch) + POST (save) RSVPs → Neon DB
 ├── server.mjs                # Local dev API server (mirrors Vercel function, port 3001)
 ├── public/
-│   ├── favicon/favicon.svg   # S&S circular gold emblem
+│   ├── favicon/favicon.svg   # S&N circular gold emblem
 │   ├── images/               # All wedding photos (local WebP)
 │   └── audio/ambient.mp3     # Background music
 ├── docs/                     # Full architectural documentation (12 docs + CHANGELOG)
@@ -108,20 +108,29 @@ shabin-weds-sana/
 
 ## 🎨 Customization
 
-Edit `src/config/weddingData.ts` to change all content:
+Edit `src/config/wedding/couple.ts` and `venue.ts` to change content:
 
 ```typescript
-export const weddingData = {
-  groom:   { fullName: "Muhammed Shabin", shortName: "Shabin" },
-  bride:   { fullName: "Sana Subair",     shortName: "Sana"   },
-  wedding: { date: "2026-07-19", day: "Sunday" },
-  theme: {
-    primary:   "#C7A97F",  // Champagne gold
-    secondary: "#F8F4EE",  // Warm ivory
-    accent:    "#2E4A3D",  // Deep emerald
-    text:      "#1A1A1A",  // Matte black
+export const couple = {
+  groom: {
+    fullName: "Mohammed Sameer Kallangadan",
+    firstName: "Mohammed Sameer",
+    lastName: "Kallangadan",
+    shortName: "Sameer",
+    parents: "S/o Abdulla Kallangadan & Ramlath OP",
+    address: "Kallangadan House, Perinthalmanna",
   },
-};
+  bride: {
+    fullName: "Nihala Jasmin KK",
+    firstName: "Nihala Jasmin",
+    lastName: "KK",
+    shortName: "Nihala",
+    parents: "D/o Abdul Azeez",
+    address: "Karukulam (H), Puliyanamkunnu (P.O), Chalavara via, Palakkad dist - 679505",
+  },
+  coupleName: "Sameer & Nihala",
+  monogram: "S&N",
+} as const;
 ```
 
 ---
@@ -130,7 +139,7 @@ export const weddingData = {
 
 | Layer | Technology |
 |---|---|
-| Framework | React 18 + Vite + TypeScript |
+| Framework | React 19 + Vite + TypeScript |
 | Styling | Tailwind CSS v4 + PostCSS |
 | Animation | Framer Motion |
 | Smooth Scroll | Lenis |
@@ -167,4 +176,4 @@ export const weddingData = {
 
 ## 📄 License
 
-Made with love & prayers. © 2026 Shabin & Sana. All rights reserved.
+Made with love & prayers. © 2026 Sameer & Nihala. All rights reserved.

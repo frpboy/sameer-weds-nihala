@@ -4,6 +4,17 @@ All notable changes to this project are documented here.
 
 ---
 
+## v3.0.0 — 2026-05-18 | Wedding Microsite Re-branding (Sameer & Nihala)
+
+- **Mirrored Codebase**: Adapted established, production-ready premium wedding microsite for Mohammed Sameer Kallangadan (S/o Abdulla Kallangadan & Ramlath OP) & Nihala Jasmin KK (D/o Abdul Azeez).
+- **Branding & Monogram**: Updated all titles, couple names, short names, and monogram (`S&N`).
+- **Favicon**: Replaced gold circular favicon with `S&N` monogram.
+- **Gallery**: Replaced hardcoded image file names with dynamic `import.meta.glob('/public/images/*')` loading.
+- **Database & RSVP**: Updated `.env` with new Neon PostgreSQL connection string and initialized `rsvps` table structure.
+- **Metadata**: Updated SEO, PWA, and OpenGraph tags for Sameer & Nihala.
+
+---
+
 ## v2.0.0 — 2026-05-17 | Full RSVP Backend + Polish Sprint
 
 ### 🗄️ Live RSVP Backend (Neon PostgreSQL)
@@ -23,12 +34,12 @@ All notable changes to this project are documented here.
 - Success state: Checkmark + "Shukran!" confirmation with "Submit Another" option
 
 ### 🔖 Favicon & PWA
-- Created `/public/favicon/favicon.svg` — circular S&S emblem in champagne gold on warm cream
+- Created `/public/favicon/favicon.svg` — circular S&N emblem in champagne gold on warm cream
 - Added `<link rel="icon">`, `<link rel="shortcut icon">`, `<link rel="apple-touch-icon">` in `index.html`
 - **Mobile browser chrome theming**: `theme-color: #141412` (deep charcoal) for Android Chrome, Samsung Internet, Edge
 - iOS: `apple-mobile-web-app-capable`, `apple-mobile-web-app-status-bar-style: black-translucent`
 - Windows: `msapplication-TileColor`, `msapplication-navbutton-color: #C7A97F`
-- `apple-mobile-web-app-title: "Shabin & Sana"` for iOS home screen
+- `apple-mobile-web-app-title: "Sameer & Nihala"` for iOS home screen
 
 ### 📊 Analytics
 - **Microsoft Clarity** integrated (`wsl77zfey5`) — session recordings, heatmaps, scroll depth, dead click detection
