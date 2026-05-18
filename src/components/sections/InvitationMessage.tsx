@@ -43,36 +43,14 @@ export default function InvitationMessage() {
               <span className="font-cinzel text-xl md:text-2xl text-accent font-medium leading-snug">
                 {weddingData.groom.fullName}
               </span>
-              {'parents' in weddingData.groom && weddingData.groom.parents && (
-                <span className="font-poppins text-xs md:text-sm text-text/80 mt-1.5 font-normal tracking-wide">
-                  {'relation' in weddingData.groom ? `${weddingData.groom.relation} ` : ''}{weddingData.groom.parents}
-                </span>
-              )}
-              {'address' in weddingData.groom && weddingData.groom.address && (
-                <span className="font-poppins text-xs text-text/60 mt-0.5 font-light leading-relaxed">
-                  {weddingData.groom.address}
-                </span>
-              )}
             </div>
-
             <div className="font-cormorant italic text-primary text-2xl md:text-3xl font-light my-4 md:my-0 select-none">
               &
             </div>
-
             <div className="flex flex-col items-center text-center max-w-xs">
               <span className="font-cinzel text-xl md:text-2xl text-accent font-medium leading-snug">
                 {weddingData.bride.fullName}
               </span>
-              {'parents' in weddingData.bride && weddingData.bride.parents && (
-                <span className="font-poppins text-xs md:text-sm text-text/80 mt-1.5 font-normal tracking-wide">
-                  {'relation' in weddingData.bride ? `${weddingData.bride.relation} ` : ''}{weddingData.bride.parents}
-                </span>
-              )}
-              {'address' in weddingData.bride && weddingData.bride.address && (
-                <span className="font-poppins text-xs text-text/60 mt-0.5 font-light leading-relaxed">
-                  {weddingData.bride.address}
-                </span>
-              )}
             </div>
           </div>
         </Card>
