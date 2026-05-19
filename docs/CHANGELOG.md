@@ -12,6 +12,7 @@ All notable changes to this project are documented here.
 - **Footer Clean-up**: Removed the redundant `S&N` monogram circle from the top of `Footer.tsx`.
 - **Global Spacing & Padding Audit**: Tuned `SectionContainer.tsx` vertical padding from `py-12 md:py-24` to `py-6 md:py-16` and compressed internal card margins (`Footer.tsx`, `TimelineSection.tsx`, `HeroContent.tsx`) to eliminate large empty gaps.
 - **Reception Time & Context Update**: Changed reception time to `"4:30 PM Onwards"` and updated the ISO local date, calendar generators, content files, and test assertions while completely removing all references to the word `"Walima"`.
+- **Background Music Fade-in**: Implemented a 5-second linear volume fade-in (starting at 0.25 up to 1.0) on initial play in `MusicProvider.tsx` while preserving full volume playback during loops.
 
 ---
 
