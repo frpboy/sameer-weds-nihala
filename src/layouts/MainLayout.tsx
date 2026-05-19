@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Lenis from 'lenis';
 import { JsonLd } from '../seo';
+import FallingPetals from '../components/effects/FallingPetals';
 
 export default function MainLayout() {
   useEffect(() => {
@@ -27,6 +28,7 @@ export default function MainLayout() {
   return (
     <div className="relative w-full min-h-screen bg-transparent">
       <JsonLd />
+      <FallingPetals />
       <Outlet />
     </div>
   );
