@@ -11,7 +11,6 @@ export default function Footer() {
   
   const whatsappShareUrl = getWhatsAppShareUrl(rawMessage);
 
-
   const handleInstagramShare = async () => {
     const result = await shareToInstagram(
       `You are joyfully invited to the wedding celebration of Mohammed Sameer & Nihala Jasmin KK on Sunday, July 19, 2026 at ${weddingData.wedding.venue}.`,
@@ -21,20 +20,11 @@ export default function Footer() {
       setInstagramToast('copied');
       setTimeout(() => setInstagramToast(null), 3500);
     }
-    // 'native' → share sheet opened, nothing else to do
-    // 'failed' → user cancelled, nothing to show
   };
 
   return (
     <footer className="relative z-10 bg-transparent text-text pt-20 pb-24 px-6 text-center">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
-        {/* Monogram */}
-        <div className="w-16 h-16 rounded-full border border-primary/60 flex items-center justify-center mb-8 bg-secondary shadow-inner">
-          <span className="font-cinzel text-xl text-primary font-medium tracking-tighter">
-            {weddingData.monogram}
-          </span>
-        </div>
-
         <h2 className="font-cinzel text-3xl md:text-5xl text-accent font-medium mb-3 leading-tight">
           <span className="block">{weddingData.groom.firstName}</span>
           <span className="block font-cormorant italic text-primary text-2xl md:text-3xl my-2 font-light">&</span>

@@ -3,7 +3,6 @@ import SectionContainer from '../ui/layout/SectionContainer';
 import SectionTitle from '../ui/layout/SectionTitle';
 import Card from '../ui/cards/Card';
 import AnimatedDivider from '../ui/layout/AnimatedDivider';
-import { weddingData } from '../../config/weddingData';
 import { content } from '../../content';
 
 export default function InvitationMessage() {
@@ -35,25 +34,9 @@ export default function InvitationMessage() {
             {content.invitation.verseRef}
           </span>
 
-          <p className="font-poppins text-sm md:text-base leading-relaxed text-text/90 mb-8 font-light">
+          <p className="font-poppins text-sm md:text-base leading-relaxed text-text/90 font-light">
             {content.invitation.body}
           </p>
-
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mt-12 whitespace-nowrap">
-            <div className="flex flex-col items-center text-center max-w-xs">
-              <span className="font-cinzel text-xl md:text-2xl text-accent font-medium leading-snug">
-                {weddingData.groom.firstName}
-              </span>
-            </div>
-            <div className="font-cormorant italic text-primary text-2xl md:text-3xl font-light my-4 md:my-0 select-none">
-              &
-            </div>
-            <div className="flex flex-col items-center text-center max-w-xs">
-              <span className="font-cinzel text-xl md:text-2xl text-accent font-medium leading-snug">
-                {weddingData.bride.firstName}
-              </span>
-            </div>
-          </div>
         </Card>
 
         <div className="mt-12">

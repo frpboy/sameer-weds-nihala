@@ -9,13 +9,15 @@ export default function FamilySection() {
   const families = [
     {
       title: "The Groom's Family",
-      parents: weddingData.groom.parents,
+      father: weddingData.groom.father,
+      mother: weddingData.groom.mother,
       residence: weddingData.groom.address,
       blessing: "May Allah fill this sacred bond with mercy, steadfast love, and lasting barakah.",
     },
     {
       title: "The Bride's Family",
-      parents: weddingData.bride.parents,
+      father: weddingData.bride.father,
+      mother: weddingData.bride.mother,
       residence: weddingData.bride.address,
       blessing: "May this blessed union be wrapped in peace, guided by faith, and crowned with lifelong joy.",
     },
@@ -41,8 +43,10 @@ export default function FamilySection() {
               <span className="font-poppins uppercase text-xs tracking-widest text-primary font-medium mb-3 block">
                 {fam.title}
               </span>
-              <h3 className="font-cinzel text-2xl text-accent font-medium mb-2 min-h-[96px] flex items-center justify-center">
-                {fam.parents}
+              <h3 className="font-cinzel text-xl md:text-2xl text-accent font-medium mb-4 min-h-[96px] flex flex-col items-center justify-center leading-snug">
+                <span className="block">{fam.father}</span>
+                <span className="block font-cormorant italic text-primary text-lg md:text-xl my-1.5 font-light leading-none">&</span>
+                <span className="block">{fam.mother}</span>
               </h3>
               <p className="font-poppins text-xs text-text/70 mb-6 italic min-h-[44px]">
                 {fam.residence}
