@@ -4,6 +4,17 @@ All notable changes to this project are documented here.
 
 ---
 
+## v3.6.0 — 2026-05-19 | UI Layout Refinement, Spacing Reductions & Event Schedule Alignment
+
+- **Invitation Card Simplification**: Removed the couple names container from `InvitationMessage.tsx` to keep the invitation body focused and clean.
+- **Consolidated Event Schedule**: Replaced the 3-event vertical timeline layout in `TimelineSection.tsx` with a single, centered Grand Reception event card, completely stripping out vertical connecting lines and diamond bullet nodes.
+- **Mobile Parent Name Wrapping Fix**: Restructured parent layouts in `couple.ts` and `FamilySection.tsx` to render across three distinct lines (Father, `&`, Mother) to avoid awkward initials wrapping on mobile.
+- **Footer Clean-up**: Removed the redundant `S&N` monogram circle from the top of `Footer.tsx`.
+- **Global Spacing & Padding Audit**: Tuned `SectionContainer.tsx` vertical padding from `py-12 md:py-24` to `py-6 md:py-16` and compressed internal card margins (`Footer.tsx`, `TimelineSection.tsx`, `HeroContent.tsx`) to eliminate large empty gaps.
+- **Reception Time & Context Update**: Changed reception time to `"4:30 PM Onwards"` and updated the ISO local date, calendar generators, content files, and test assertions while completely removing all references to the word `"Walima"`.
+
+---
+
 ## v3.5.0 — 2026-05-19 | Content Personalization & Event Context Corrections
 
 - **Invitation Verse Visibility + Source Sync**: Updated `InvitationMessage.tsx` to consume centralized `content.invitation` fields (`verse`, `verseRef`, `body`) and increased verse readability with stronger contrast and weight.

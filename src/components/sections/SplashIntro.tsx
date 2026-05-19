@@ -66,15 +66,10 @@ export default function SplashIntro({ onEnter }: SplashIntroProps) {
             <span className="font-cormorant text-2xl md:text-3xl text-primary mb-6 tracking-wide leading-relaxed overflow-visible inline-block px-4">
               ﷽
             </span>
-            <p className="quote-poetic text-center mb-8">
-              "In the name of Allah, the Most Gracious, the Most Merciful"
+            <p className="quote-poetic text-center mb-8 leading-relaxed">
+              "In the name of Allah, the Most Gracious, <br className="md:hidden" />
+              the Most Merciful"
             </p>
-
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border border-primary/40 flex items-center justify-center mb-6 bg-secondary/80 shadow-inner">
-              <span className="font-cinzel text-2xl md:text-3xl text-primary font-semibold tracking-tighter">
-                {weddingData.monogram}
-              </span>
-            </div>
 
             <h1 className="font-cinzel text-2xl md:text-4xl text-accent font-medium mb-2 tracking-wide max-w-md leading-tight">
               <span className="block">{weddingData.groom.firstName}</span>
