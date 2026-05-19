@@ -5,10 +5,10 @@ import { getWhatsAppShareUrl } from '../lib/share';
 describe('Foundational Utilities & Link Generation', () => {
   it('should generate valid Google Calendar URL', () => {
     const url = generateGoogleCalendarUrl({
-      title: 'Wedding Nikah: Sameer & Nihala',
+      title: 'Wedding Celebration: Sameer & Nihala',
       details: 'Blessed wedding celebration',
       location: 'Shifa Convention Center, Perinthalmanna',
-      startDateIso: '2026-07-19T11:00:00+05:30',
+      startDateIso: '2026-07-19T16:30:00+05:30',
       durationHours: 5,
     });
 

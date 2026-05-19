@@ -7,8 +7,8 @@ import { weddingData } from '../../config/weddingData';
 
 export default function TimelineSection() {
   const event = {
-    title: 'Grand Reception (Walima)',
-    time: 'July 19, 2026 • 11:00 AM - 3:30 PM',
+    title: 'Grand Reception',
+    time: 'July 19, 2026 • 4:30 PM Onwards',
     location: weddingData.wedding.venue || 'Shifa Convention Center',
     desc: 'Join us for our grand wedding reception and lavish traditional feast to celebrate our marriage.',
   };

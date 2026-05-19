@@ -21,7 +21,7 @@ export const content = {
     sectionSubtitle: "The flow of our celebration",
     events: [
       {
-        time: "11:00 AM",
+        time: "4:30 PM Onwards",
         title: "Marriage & Reception",
         description: "A joyful celebration with family, prayers, and a festive gathering.",
       },
