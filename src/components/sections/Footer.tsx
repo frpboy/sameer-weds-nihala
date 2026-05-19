@@ -23,19 +23,19 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative z-10 bg-transparent text-text pt-20 pb-24 px-6 text-center">
+    <footer className="relative z-10 bg-transparent text-text pt-10 pb-16 px-6 text-center">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         <h2 className="font-cinzel text-3xl md:text-5xl text-accent font-medium mb-3 leading-tight">
           <span className="block">{weddingData.groom.firstName}</span>
           <span className="block font-cormorant italic text-primary text-2xl md:text-3xl my-2 font-light">&</span>
           <span className="block">{weddingData.bride.firstName}</span>
         </h2>
-        <p className="font-poppins uppercase text-xs tracking-[0.3em] text-accent/70 mb-12 font-medium">
+        <p className="font-poppins uppercase text-xs tracking-[0.3em] text-accent/70 mb-8 font-medium">
           Sunday, July 19, 2026 | {weddingData.wedding.venue}
         </p>
 
         {/* Social Share Buttons */}
-        <div className="flex flex-wrap gap-4 justify-center mb-6">
+        <div className="flex flex-wrap gap-4 justify-center mb-4">
           <a href={whatsappShareUrl} target="_blank" rel="noopener noreferrer">
             <Button variant="glass" className="flex items-center gap-2.5 px-7 py-3.5 shadow-sm border-primary/50 text-accent hover:bg-primary/15 font-medium cursor-pointer transition-all duration-300">
               <FaWhatsapp size={20} className="text-emerald-600" />
@@ -54,7 +54,7 @@ export default function Footer() {
         </div>
 
         {/* Toast notification */}
-        <div className="h-8 flex items-center justify-center mb-8">
+        <div className="h-4 flex items-center justify-center mb-4">
           {instagramToast === 'copied' && (
             <span className="font-poppins text-xs text-primary bg-primary/10 border border-primary/30 px-5 py-2 rounded-full animate-fade-in shadow-sm">
               Link copied! Open Instagram and paste into your story or DM.
@@ -63,16 +63,16 @@ export default function Footer() {
         </div>
 
         {/* Emotional Closing Note */}
-        <div className="my-12 px-4 max-w-lg mx-auto">
-          <div className="w-16 h-px bg-primary/40 mx-auto mb-6" />
-          <p className="quote-poetic text-center mb-6">
+        <div className="my-6 px-4 max-w-lg mx-auto">
+          <div className="w-16 h-px bg-primary/40 mx-auto mb-4" />
+          <p className="quote-poetic text-center mb-4">
             "May Allah shower this marriage with mercy, deepen their love, and grant them a lifetime of peace."
           </p>
-          <div className="w-16 h-px bg-primary/40 mx-auto mt-6" />
+          <div className="w-16 h-px bg-primary/40 mx-auto mt-4" />
         </div>
 
         {/* Copyright & Credits */}
-        <div className="font-poppins text-xs text-text/50 tracking-widest font-light space-y-2 mt-8">
+        <div className="font-poppins text-xs text-text/50 tracking-widest font-light space-y-2 mt-6">
           <p>
             Crafted with heartfelt duas by{' '}
             <a 
