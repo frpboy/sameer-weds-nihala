@@ -19,7 +19,7 @@ export const couple = {
     father: "Abdul Azeez",
     mother: "Rasiya EP",
     parents: "Abdul Azeez & Rasiya EP",
-    address: "Karukulam (H), Puliyanamkunnu (P.O), Chalavara via, Palakkad dist - 679505",
+    address: "Karukulam House, Chalavara",
   },
   coupleName: "Sameer & Nihala",
   monogram: "S&N",

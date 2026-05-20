@@ -19,7 +19,7 @@ export function MusicProvider({
   audioUrl?: string; 
  }) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolumeState] = useState(0.25);
+  const [volume, setVolumeState] = useState(0.0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const fadeIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const hasFadedInRef = useRef(false);
@@ -98,7 +98,7 @@ export function MusicProvider({
       clearInterval(fadeIntervalRef.current);
     }
 
-    const startVolume = 0.25;
+    const startVolume = 0.0;
     const targetVolume = 0.50; // Cap full volume at 0.50
     const durationMs = 5000; // 5 seconds fade-in
     const intervalMs = 50; // update volume every 50ms

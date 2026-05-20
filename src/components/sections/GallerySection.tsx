@@ -117,18 +117,7 @@ export default function GallerySection() {
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
               />
 
-              {/* Warm tone layer & soft light leaks */}
-              <div className="absolute inset-0 bg-amber-950/10 mix-blend-color-burn pointer-events-none" />
-              <motion.div 
-                animate={{ opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -top-16 -left-16 w-48 h-48 bg-amber-500/10 rounded-full blur-[40px] pointer-events-none" 
-              />
-              <motion.div 
-                animate={{ opacity: [0.2, 0.4, 0.2] }}
-                transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-                className="absolute -bottom-16 -right-16 w-48 h-48 bg-primary/10 rounded-full blur-[40px] pointer-events-none" 
-              />
+              {/* Natural image container with no color-burn filters to prevent Safari yellow-grading bugs */}
             </motion.div>
           </AnimatePresence>
         </div>
