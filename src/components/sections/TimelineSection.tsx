@@ -10,7 +10,7 @@ export default function TimelineSection() {
     title: 'Grand Reception',
     time: 'July 19, 2026 • 4:30 PM Onwards',
     location: weddingData.wedding.venue || 'Shifa Convention Center',
-    desc: 'Join us for our grand wedding reception and lavish traditional feast to celebrate our marriage.',
+    desc: 'Join us for an evening of celebration, love, and a traditional feast as we mark the beginning of our married life.',
   };
 
   return (

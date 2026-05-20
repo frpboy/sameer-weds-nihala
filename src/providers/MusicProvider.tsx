@@ -99,7 +99,7 @@ export function MusicProvider({
     }
 
     const startVolume = 0.0;
-    const targetVolume = 0.50; // Cap full volume at 0.50
+    const targetVolume = 0.25; // Cap full volume at 0.25
     const durationMs = 5000; // 5 seconds fade-in
     const intervalMs = 50; // update volume every 50ms
     const steps = durationMs / intervalMs;

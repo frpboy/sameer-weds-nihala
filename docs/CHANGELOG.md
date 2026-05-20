@@ -6,7 +6,7 @@ All notable changes to this project are documented here.
 
 ## v3.7.0 — 2026-05-20 | Volume Adjustment, Safari Image Tint Fix & Bride Address Simplification
 
-- **Volume Adjustment**: Reduced initial audio volume to `0.0` and calibrated the fade-in sweep to smoothly build up from `0.0` to `0.50` maximum, avoiding sudden volume jumps when playback starts.
+- **Volume Adjustment**: Reduced initial audio volume to `0.0` and calibrated the fade-in sweep to smoothly build up from `0.0` to `0.25` maximum, avoiding sudden volume jumps when playback starts.
 - **Safari Image Tint Fix**: Removed the `bg-amber-950/10` with `mix-blend-color-burn` layer and soft color/light leaks from `GallerySection.tsx` to fix the iPhone Safari color distortion bug that graded photos yellow.
 - **Bride Address Simplification**: Shortened the bride's residence address in `couple.ts` to show only the house and place name (`Karukulam House, Chalavara`), matching the groom's residence format and maintaining visual balance in the Family section.
 
