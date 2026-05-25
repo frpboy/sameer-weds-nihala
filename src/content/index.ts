@@ -6,7 +6,7 @@ export const content = {
     defaultGreeting: "Dear Family & Friends",
   },
   hero: {
-    invitationIntro: "We Joyfully Invite You To Celebrate",
+    invitationIntro: "We Joyfully Invite You To Celebrate Our Wedding",
     scrollToExplore: "Scroll to explore",
   },
   invitation: {
