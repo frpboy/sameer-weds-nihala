@@ -22,6 +22,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     root.style.setProperty('--color-secondary', preset.colors.secondary);
     root.style.setProperty('--color-accent', preset.colors.accent);
     root.style.setProperty('--color-text', preset.colors.text);
+
+    // Update status bar and address bar color dynamically for both Android and iOS
+    const metaThemeColors = document.querySelectorAll('meta[name="theme-color"]');
+    metaThemeColors.forEach((meta) => {
+      meta.setAttribute('content', preset.colors.secondary);
+    });
   }, [preset]);
 
   const setPresetId = (id: string) => {
