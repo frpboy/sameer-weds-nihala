@@ -25,11 +25,10 @@ export default function RsvpSection() {
     <SectionContainer id="rsvp" className="relative z-10 py-12 md:py-24">
       <SectionTitle title="RSVP & Wishes" subtitle="We Will See You At The Function" />
 
-      {/* 3-col grid on desktop, stacked on mobile */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start max-w-5xl mx-auto px-4">
-        <RsvpForm onAddEntry={handleAddEntry} themeCard={themeCard} />
-        <GuestCounter entries={entries} fetching={fetching} themeCard={themeCard} />
-        <WishesWall entries={entries} fetching={fetching} themeCard={themeCard} />
+      {/* 2-col grid on desktop, stacked on mobile */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch max-w-4xl mx-auto px-4">
+        <RsvpForm onAddEntry={handleAddEntry} themeCard={`${themeCard} h-full`} />
+        <WishesWall entries={entries} fetching={fetching} themeCard={`${themeCard} h-full`} />
       </div>
     </SectionContainer>
   );

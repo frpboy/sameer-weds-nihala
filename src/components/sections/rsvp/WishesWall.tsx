@@ -1,4 +1,4 @@
-// WishesWall
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BiCheckCircle, BiX, BiLoaderAlt } from 'react-icons/bi';
 import { MdFavorite } from 'react-icons/md';
@@ -14,8 +14,49 @@ export default function WishesWall({ entries, fetching, themeCard }: WishesWallP
   const getName = (e: RsvpEntry) => e.fullName || e.full_name || 'Guest';
   const getNote = (e: RsvpEntry) => e.dietaryOrNotes || e.dietary_or_notes || '';
 
+  const [startIndex, setStartIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (entries.length <= 4 || isHovered) return;
+    
+    const interval = setInterval(() => {
+      setStartIndex((prev) => (prev + 1) % entries.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [entries.length, isHovered]);
+
+  const displayedEntries = [];
+  if (entries.length > 0) {
+    let heightUsed = 0;
+    const MAX_HEIGHT = 320; // Approximate height budget
+
+    for (let i = 0; i < entries.length; i++) {
+      if (displayedEntries.length >= 4) break; // Hard limit of 4
+      
+      const entry = entries[(startIndex + i) % entries.length];
+      const noteLen = getNote(entry).length;
+      
+      // Base height ~65px. Extra ~1px per character.
+      const estimatedHeight = 65 + (noteLen * 0.7);
+      
+      // If adding this exceeds our budget AND we already have at least 2 items, stop.
+      if (displayedEntries.length >= 2 && heightUsed + estimatedHeight > MAX_HEIGHT) {
+        break;
+      }
+      
+      displayedEntries.push(entry);
+      heightUsed += estimatedHeight;
+    }
+  }
+
   return (
-    <div className={`${themeCard} p-7 flex flex-col`} style={{ maxHeight: '480px' }}>
+    <div 
+      className={`${themeCard} p-7 flex flex-col`}
+      onMouseEnter={() => setIsHovered(true)} 
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <h3 className="font-cinzel text-xs text-primary tracking-[0.2em] uppercase mb-4 flex items-center gap-2 flex-shrink-0 font-semibold">
         <MdFavorite className="text-primary/60" /> Wishes & Prayers
       </h3>
@@ -32,12 +73,14 @@ export default function WishesWall({ entries, fetching, themeCard }: WishesWallP
           </p>
         )}
 
-        <AnimatePresence initial={false}>
-          {entries.map((entry, i) => (
+        <AnimatePresence mode="popLayout" initial={false}>
+          {displayedEntries.map((entry) => (
             <motion.div
-              key={entry.created_at + i}
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
+              layout
+              key={`${entry.created_at}-${entry.fullName || entry.full_name || 'guest'}`}
+              initial={{ opacity: 0, y: 15, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -15, scale: 0.95, transition: { duration: 0.2 } }}
               transition={{ duration: 0.35 }}
               className="p-3.5 rounded-xl bg-secondary border border-primary/20 shadow-sm space-y-1.5 overflow-hidden"
             >
