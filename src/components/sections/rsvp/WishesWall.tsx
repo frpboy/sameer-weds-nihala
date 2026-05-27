@@ -44,7 +44,7 @@ export default function WishesWall({ entries, fetching, themeCard }: WishesWallP
         <MdFavorite className="text-primary/60" /> Wishes & Prayers
       </h3>
 
-      <div className="flex-1 overflow-hidden relative space-y-3 pr-0.5 [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]">
+      <div className="flex-1 min-h-0 overflow-hidden relative space-y-3 pr-0.5 [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]">
         {fetching && (
           <div className="flex justify-center pt-8">
             <BiLoaderAlt className="animate-spin text-primary text-xl" />

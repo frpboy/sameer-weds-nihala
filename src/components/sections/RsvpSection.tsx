@@ -28,9 +28,7 @@ export default function RsvpSection() {
       {/* 2-col grid on desktop, stacked on mobile */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch max-w-4xl mx-auto px-4">
         <RsvpForm onAddEntry={handleAddEntry} themeCard={`${themeCard} h-full`} />
-        <div className="relative w-full h-full min-h-[400px] md:min-h-0">
-          <WishesWall entries={entries} fetching={fetching} themeCard={`${themeCard} absolute inset-0`} />
-        </div>
+        <WishesWall entries={entries} fetching={fetching} themeCard={`${themeCard} h-full md:min-h-0`} />
       </div>
     </SectionContainer>
   );
