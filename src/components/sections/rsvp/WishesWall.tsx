@@ -29,25 +29,8 @@ export default function WishesWall({ entries, fetching, themeCard }: WishesWallP
 
   const displayedEntries = [];
   if (entries.length > 0) {
-    let heightUsed = 0;
-    const MAX_HEIGHT = 320; // Approximate height budget
-
-    for (let i = 0; i < entries.length; i++) {
-      if (displayedEntries.length >= 4) break; // Hard limit of 4
-      
-      const entry = entries[(startIndex + i) % entries.length];
-      const noteLen = getNote(entry).length;
-      
-      // Base height ~65px. Extra ~1px per character.
-      const estimatedHeight = 65 + (noteLen * 0.7);
-      
-      // If adding this exceeds our budget AND we already have at least 2 items, stop.
-      if (displayedEntries.length >= 2 && heightUsed + estimatedHeight > MAX_HEIGHT) {
-        break;
-      }
-      
-      displayedEntries.push(entry);
-      heightUsed += estimatedHeight;
+    for (let i = 0; i < Math.min(4, entries.length); i++) {
+      displayedEntries.push(entries[(startIndex + i) % entries.length]);
     }
   }
 
@@ -61,7 +44,7 @@ export default function WishesWall({ entries, fetching, themeCard }: WishesWallP
         <MdFavorite className="text-primary/60" /> Wishes & Prayers
       </h3>
 
-      <div className="flex-1 overflow-y-auto space-y-3 pr-0.5">
+      <div className="flex-1 overflow-hidden relative space-y-3 pr-0.5 [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]">
         {fetching && (
           <div className="flex justify-center pt-8">
             <BiLoaderAlt className="animate-spin text-primary text-xl" />
