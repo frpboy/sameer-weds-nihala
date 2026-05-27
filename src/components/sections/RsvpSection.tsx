@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import SectionContainer from '../ui/layout/SectionContainer';
 import SectionTitle from '../ui/layout/SectionTitle';
-import { RsvpForm, GuestCounter, WishesWall, RsvpEntry } from './rsvp';
+import { RsvpForm, WishesWall, RsvpEntry } from './rsvp';
 
 const themeCard = 'relative rounded-2xl bg-secondary/70 backdrop-blur-md border border-primary/25 shadow-lg overflow-hidden';
 
