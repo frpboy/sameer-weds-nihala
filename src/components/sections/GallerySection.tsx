@@ -4,10 +4,22 @@ import SectionContainer from '../ui/layout/SectionContainer';
 import SectionTitle from '../ui/layout/SectionTitle';
 import { content } from '../../content';
 
+const RESPONSIVE_SUFFIX = /-\d{3,4}\.(webp|jpe?g|png)$/i;
+
+const pickResponsiveImage = (src: string, viewportWidth: number, dpr: number) => {
+  const match = src.match(/^(.*)\.(webp|jpe?g|png)$/i);
+  if (!match) return src;
+  const [, base, ext] = match;
+  const target = viewportWidth * dpr;
+  const width = target <= 700 ? 640 : target <= 1100 ? 960 : 1280;
+  return `${base}-${width}.${ext}`;
+};
+
 export default function GallerySection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [viewportWidth, setViewportWidth] = useState<number>(() => (typeof window === 'undefined' ? 1280 : window.innerWidth));
 
   const imageFiles = import.meta.glob('/public/images/*.{webp,jpg,jpeg,png}');
   const defaultCaptions = [
@@ -23,7 +35,9 @@ export default function GallerySection() {
     'Pure Bliss',
   ];
 
-  const photos = Object.keys(imageFiles).map((path, index) => ({
+  const photos = Object.keys(imageFiles)
+    .filter((path) => !RESPONSIVE_SUFFIX.test(path))
+    .map((path, index) => ({
     id: index + 1,
     url: path.replace('/public', ''),
     caption: defaultCaptions[index % defaultCaptions.length],
@@ -38,6 +52,12 @@ export default function GallerySection() {
     return () => clearInterval(timer);
   }, [isHovered, photos.length]);
 
+  useEffect(() => {
+    const onResize = () => setViewportWidth(window.innerWidth);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   const handleNext = () => {
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % photos.length);
@@ -49,6 +69,9 @@ export default function GallerySection() {
   };
 
   const activePhoto = photos[currentIndex];
+  const activePhotoUrl = activePhoto
+    ? pickResponsiveImage(activePhoto.url, viewportWidth, typeof window === 'undefined' ? 1 : window.devicePixelRatio || 1)
+    : '';
 
   const variants = {
     enter: (dir: number) => ({
@@ -111,7 +134,7 @@ export default function GallerySection() {
               <motion.img
                 animate={{ scale: [1, 1.08, 1] }}
                 transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-                src={activePhoto.url}
+                src={activePhotoUrl}
                 alt={activePhoto.caption}
                 loading={activePhoto.id === 1 ? "eager" : "lazy"}
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
