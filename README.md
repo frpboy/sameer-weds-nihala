@@ -3,7 +3,7 @@
 > An elegant, mobile-first digital wedding invitation microsite for **Mohammed Sameer Kallangadan (S/o Abdulla Kallangadan & Ramlath OP) & Nihala Jasmin KK (D/o Abdul Azeez)**, crafted with React, Vite, Tailwind CSS (v4), and Framer Motion. Deployed on Vercel with a live Neon PostgreSQL RSVP backend.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ffrpboy%2Fsameer-weds-nihala)
-[![Live Site](https://img.shields.io/badge/Live%20Site-sameer--weds--nihala.vercel.app-brightgreen)](https://sameer-weds-nihala.vercel.app/)
+[![Live Site](https://img.shields.io/badge/Live%20Site-sameer--weds--nihala.vercel.app-brightgreen)](https://www.sameer.sahakar-celebrations.in/)
 
 ---
 

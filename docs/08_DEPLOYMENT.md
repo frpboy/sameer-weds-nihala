@@ -8,7 +8,7 @@
 - [ ] `npm run build` passes with zero TypeScript errors
 - [ ] OG image URL updated in `index.html` to match Vercel deployment URL
 - [ ] Microsoft Clarity project ID in `index.html` is correct (`wsl77zfey5`)
-- [ ] Favicon SVG renders correctly at `https://sameer-weds-nihala.vercel.app/favicon/favicon.svg`
+- [ ] Favicon SVG renders correctly at `https://www.sameer.sahakar-celebrations.in/favicon/favicon.svg`
 
 ## Local → Production Flow
 
