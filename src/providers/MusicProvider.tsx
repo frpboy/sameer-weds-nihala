@@ -154,6 +154,12 @@ export function MusicProvider({
   const pause = () => {
     if (!audioRef.current) return;
     audioRef.current.pause();
+    if (fadeIntervalRef.current) {
+      clearInterval(fadeIntervalRef.current);
+      fadeIntervalRef.current = null;
+    }
+    audioRef.current.volume = 0;
+    setVolumeState(0);
     setIsPlaying(false);
   };
 
